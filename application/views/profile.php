@@ -69,11 +69,11 @@
                                                 <h5 class="modal-title">Edit Profile</h5>
                                                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                                             </div>
-                                            <form action="<?= base_url('Login/editprofile/').$user['id'] ?>" method="post" enctype="multipart/form-data">
+                                            <form action="<?= base_url('Login/editprofile/').$user['id_pengguna'] ?>" method="post" enctype="multipart/form-data">
                                             <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Username</label>
-                                                <input type="hidden" class="form-control" id="id" name="id" value="<?= $user['id'] ?>" >
+                                                <input type="hidden" class="form-control" id="id" name="id" value="<?= $user['id_pengguna'] ?>" >
                                                 <input type="text" class="form-control" id="username" name="username" value="<?= $user['username'] ?>">
                                                 <?= form_error('username','<small class="text-danger pl-3 ">','</small>');?>
                                             </div>

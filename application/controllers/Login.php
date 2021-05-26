@@ -106,7 +106,7 @@ class Login extends CI_Controller {
 
             $new_image =  $this->upload->data('file_name');
             $this->db->set('foto',$new_image);
-            $this->db->where('id', $id);
+            $this->db->where('id_pengguna', $id);
 			$this->db->update('pengguna');
         } else{
             return "avatar.png";
@@ -115,11 +115,11 @@ class Login extends CI_Controller {
 
 		$this->db->set('username', $this->input->post('username'));
 		$this->db->set('password', password_hash($this->input->post('password'), PASSWORD_DEFAULT));
-		$this->db->where('id', $id);
+		$this->db->where('id_pengguna', $id);
 		$this->db->update('pengguna');
 		$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil diubah ! 
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
-			redirect('welcome');
+			redirect('');
 		}
 
 	}

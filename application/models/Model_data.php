@@ -17,7 +17,7 @@ class Model_data extends CI_Model
 	}
 
 	public function ambil_id_profile($id){
-		return $this->db->get_where('pengguna',['id'=> $id])->row_array();
+		return $this->db->get_where('pengguna',['id_pengguna'=> $id])->row_array();
 	}
 	
 

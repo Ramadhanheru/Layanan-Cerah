@@ -39,4 +39,10 @@ class Cabang extends CI_Controller {
 		$this->load->view('briefing');
 		$this->load->view('template/footer');
 	}
+	public function checking_kenyamanan(){
+		$data['user'] =  $this->db->get_where('pengguna', ['username' => $this->session->userdata('user')])->row_array();
+		$this->load->view('template/header',$data);
+		$this->load->view('checking_kenyamanan');
+		$this->load->view('template/footer');
+	}
 }

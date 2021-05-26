@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="<?= base_url('asset/'); ?>assets/css/slicknav.min.css">
     <!-- amchart css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <!-- Start datatable css -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
     <!-- others css -->
     <link rel="stylesheet" href="<?= base_url('asset/'); ?>assets/css/typography.css">
     <link rel="stylesheet" href="<?= base_url('asset/'); ?>assets/css/default-css.css">
@@ -51,11 +56,11 @@
                                 <a href="<?= base_url('cabang') ?>"><i class="ti-dashboard"></i><span>Dashboard</span></a>
                             </li>
                             <li <?= $this->uri->segment(2) == 'briefing' ? 'class="active"' : '' ?>><a href="<?= base_url('cabang/briefing') ?>"><i class="ti-map-alt"></i> <span>Absensi Briefing</span></a></li>
-                            <li>
+                            <li <?= $this->uri->segment(2) == 'checking_kenyamanan' ? 'class="active"' : '' ?>>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
                                     <span>Implementasi Layanan Cerah</span></a>
                                 <ul class="collapse">
-                                    <li><a href="#">Kenyamanan Banking Hall</a></li>
+                                    <li <?= $this->uri->segment(2) == 'checking_kenyamanan' ? 'class="active"' : '' ?>><a href="<?= base_url('cabang/checking_kenyamanan'); ?>">Kenyamanan Banking Hall</a></li>
                                     <li><a href="#">Peralatan Banking Hall</a></li>
                                     <li><a href="#">Checking Toilet</a></li>
                                     <li><a href="#">Checking Atm</a></li>
@@ -130,7 +135,7 @@
                             <img class="avatar user-thumb" src="<?= base_url('uploadfile/').$user['foto'];?>" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?= $user['nama']; ?> <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="<?= base_url('Login/e_profile/').$user['id']; ?>">Profile</a>
+                                <a class="dropdown-item" href="<?= base_url('Login/e_profile/').$user['id_pengguna']; ?>">Profile</a>
                                 <a class="dropdown-item" href="<?= base_url('Login/logout') ?>">Log Out</a>
                             </div>
                         </div>
