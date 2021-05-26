@@ -51,6 +51,19 @@ echo $datee; ?>
                                                 <label for="petugas2">Nama Petugas 2</label>
                                                 <input type="text" class="form-control" id="petugas2" aria-describedby="emailHelp" placeholder="masukan nama petugas..">
                                             </div>
+                                            <?php foreach ($objek->result() as $dr){ ?>
+                                        <div class="form-group">
+                                            <label class="col-form-label"><?= $dr->objek; ?></label>
+                                            <select class="custom-select">
+                                                 <?php foreach ($kondisi->result() as $drr){ 
+                                                    if($drr->id_objek == $dr->id_objek){
+                                                    ?>
+                                            <option value="<?= $drr->id_kondisi; ?>"><?= $drr->kondisi; ?></option>
+                                                <?php }
+                                                } ?>
+                                            </select>
+                                        </div>
+                                            <?php } ?>
 
                                             <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Submit</button>
                                         </form>
