@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Cabang extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -22,7 +22,7 @@ class Welcome extends CI_Controller {
 	{
 		parent::__construct();
 
-			if($this->session->userdata('role')!= '1')
+			if($this->session->userdata('role')!= '2')
 				redirect ('login');
 	}
 	public function index()
@@ -30,6 +30,13 @@ class Welcome extends CI_Controller {
 		$data['user'] =  $this->db->get_where('pengguna', ['username' => $this->session->userdata('user')])->row_array();
 		$this->load->view('template/header',$data);
 		$this->load->view('dashboard');
+		$this->load->view('template/footer');
+	}
+
+	public function briefing(){
+		$data['user'] =  $this->db->get_where('pengguna', ['username' => $this->session->userdata('user')])->row_array();
+		$this->load->view('template/header',$data);
+		$this->load->view('briefing');
 		$this->load->view('template/footer');
 	}
 }

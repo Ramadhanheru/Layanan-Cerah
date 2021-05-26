@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>srtdash - SEO Dashboard</title>
+    <title>Layanan Cerah App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?= base_url('asset/'); ?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?= base_url('asset/'); ?>assets/css/bootstrap.min.css">
@@ -46,13 +46,27 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li class="active">
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
+                            <?php if($this->session->userdata('role') == 2){ ?>
+                                <li <?= $this->uri->segment(2) == '' ? 'class="active"' : '' ?>>
+                                <a href="<?= base_url('cabang') ?>"><i class="ti-dashboard"></i><span>Dashboard</span></a>
+                            </li>
+                            <li <?= $this->uri->segment(2) == 'briefing' ? 'class="active"' : '' ?>><a href="<?= base_url('cabang/briefing') ?>"><i class="ti-map-alt"></i> <span>Absensi Briefing</span></a></li>
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
+                                    <span>Implementasi Layanan Cerah</span></a>
                                 <ul class="collapse">
-                                    <li><a href="#">ICO dashboard</a></li>
-                                    <li><a href="#">Ecommerce dashboard</a></li>
-                                    <li class="active"><a href="#">SEO dashboard</a></li>
+                                    <li><a href="#">Kenyamanan Banking Hall</a></li>
+                                    <li><a href="#">Peralatan Banking Hall</a></li>
+                                    <li><a href="#">Checking Toilet</a></li>
+                                    <li><a href="#">Checking Atm</a></li>
                                 </ul>
+                            </li>
+                            <li><a href="#"><i class="ti-map-alt"></i> <span>Form Role Play</span></a></li>
+                            <li><a href="<?= base_url('Login/logout') ?>"><i class="ti-map-alt"></i> <span>Log Out</span></a></li>
+                            <?php } ?>
+                            <?php if($this->session->userdata('role') == 1){ ?>
+                                <li class="active">
+                                <a href="#"><i class="ti-dashboard"></i><span>Dashboard</span></a>
                             </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
@@ -65,6 +79,9 @@
                             </li>
                             <li><a href="#"><i class="ti-map-alt"></i> <span>maps</span></a></li>
                             <li><a href="#"><i class="ti-receipt"></i> <span>Invoice Summary</span></a></li>
+                            <li><a href="<?= base_url('Login/logout') ?>"><i class="ti-map-alt"></i> <span>Log Out</span></a></li>
+                            <?php } ?>
+                            
                         </ul>
                     </nav>
                 </div>
@@ -110,10 +127,10 @@
                     </div>
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
-                            <img class="avatar user-thumb" src="<?= base_url('asset/'); ?>assets/images/author/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
+                            <img class="avatar user-thumb" src="<?= base_url('uploadfile/').$user['foto'];?>" alt="avatar">
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?= $user['nama']; ?> <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Settings</a>
+                                <a class="dropdown-item" href="<?= base_url('Login/e_profile/').$user['id']; ?>">Profile</a>
                                 <a class="dropdown-item" href="<?= base_url('Login/logout') ?>">Log Out</a>
                             </div>
                         </div>
