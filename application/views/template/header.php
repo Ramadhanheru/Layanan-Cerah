@@ -43,8 +43,8 @@
         <!-- sidebar menu area start -->
         <div class="sidebar-menu">
             <div class="sidebar-header">
-                <div class="logo">
-                    <a href="#"><img src="<?= base_url('asset/'); ?>assets/images/icon/logo.png" alt="logo"></a>
+                <div class="">
+                    <a href="#"><img src="<?= base_url('asset/'); ?>bs1.png" alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -52,21 +52,23 @@
                     <nav>
                         <ul class="metismenu" id="menu">
                             <?php if($this->session->userdata('role') == 2){ ?>
-                                <li <?= $this->uri->segment(2) == '' ? 'class="active"' : '' ?>>
-                                <a href="<?= base_url('cabang') ?>"><i class="ti-dashboard"></i><span>Dashboard</span></a>
+                                <li <?= $this->uri->segment(2) == 'dashboard' ? 'class="active"' : '' ?>>
+                                <a href="<?= base_url('cabang/dashboard') ?>"><i class="ti-dashboard"></i><span>Dashboard</span></a>
                             </li>
                             <li <?= $this->uri->segment(2) == 'briefing' ? 'class="active"' : '' ?>><a href="<?= base_url('cabang/briefing') ?>"><i class="ti-map-alt"></i> <span>Absensi Briefing</span></a></li>
-                            <li <?= $this->uri->segment(2) == 'checking_kenyamanan' ? 'class="active"' : '' ?>>
+                            <li <?= $this->uri->segment(2) == 'checking_peralatan' ||
+                                    $this->uri->segment(2) == 'checking_kenyamanan' ||
+                                    $this->uri->segment(2) == 'checking_toilet' ||
+                                    $this->uri->segment(2) == 'checking_atm' ? 'class="active"' : '' ?>>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
                                     <span>Implementasi Layanan Cerah</span></a>
                                 <ul class="collapse">
-                                    <li <?= $this->uri->segment(2) == 'checking_kenyamanan' ? 'class="active"' : '' ?>><a href="<?= base_url('cabang/checking_kenyamanan'); ?>">Kenyamanan Banking Hall</a></li>
-                                    <li><a href="#">Peralatan Banking Hall</a></li>
-                                    <li><a href="#">Checking Toilet</a></li>
-                                    <li><a href="#">Checking Atm</a></li>
+                                    <li <?= $this->uri->segment(2) == 'checking_peralatan' ?  'class="active"' : '' ?>><a href="<?= base_url('cabang/checking_peralatan'); ?>">Peralatan Banking Hall</a></li>
+                                    <li <?= $this->uri->segment(2) == 'checking_kenyamanan' ?  'class="active"' : '' ?>><a href="<?= base_url('cabang/checking_kenyamanan'); ?>">Kenyamanan Banking Hall</a></li>
+                                    <li <?= $this->uri->segment(2) == 'checking_toilet' ?  'class="active"' : '' ?>><a href="<?= base_url('cabang/checking_toilet'); ?>">Checking Toilet</a></li>
+                                    <li <?= $this->uri->segment(2) == 'checking_atm' ?  'class="active"' : '' ?>><a href="<?= base_url('cabang/checking_atm'); ?>">Checking Atm</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#"><i class="ti-map-alt"></i> <span>Form Role Play</span></a></li>
                             <li><a href="<?= base_url('Login/logout') ?>"><i class="ti-map-alt"></i> <span>Log Out</span></a></li>
                             <?php } ?>
                             <?php if($this->session->userdata('role') == 1){ ?>
@@ -122,11 +124,12 @@
             <div class="page-title-area">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
-                        <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Dashboard</h4>
+                        <div class="breadcrumbs-area clearfix ">
+                            <!-- <h4 class="page-title pull-left" style=""><?= $this->uri->segment(2); ?></h4> -->
                             <ul class="breadcrumbs pull-left">
+                                <li style="margin-right: 20px;"><span><h4 class="text-dark"><?= $this->uri->segment(2); ?></h4></span></li>
                                 <li><a href="#">Home</a></li>
-                                <li><span>Dashboard</span></li>
+                                <li><span><?= $this->uri->segment(2); ?></span></li>
                             </ul>
                         </div>
                     </div>

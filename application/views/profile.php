@@ -10,7 +10,7 @@
                                 <div class="row">
                                     <div class="col-lg-2">
                                             <div class="form-group">
-                                                <img src="<?= base_url('uploadfile/').$user['foto']; ?>" width="100"><br>
+                                                <img src="<?= base_url('uploadfile/').$user['foto']; ?>" width="300"><br>
                                                 <label for="exampleInputEmail1">Foto Profile</label>
                                             </div>
                                     </div>

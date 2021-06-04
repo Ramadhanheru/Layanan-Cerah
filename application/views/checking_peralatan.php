@@ -8,11 +8,11 @@
                                     </div>
                                 </div>
                     </div>
-                     <!-- Primary table start -->
+                    <!-- Primary table start -->
                     <div class="col-12 ">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="header-title">Table Checking Kenyamanan Banking Hall</h4>
+                                <h4 class="header-title">Table Checking Peralatan Banking Hall</h4>
                                 <div class="data-tables datatable-primary">
                                     <table id="dataTable2" class="text-center">
                                         <thead class="text-capitalize">
@@ -55,11 +55,11 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="header-title">Form Checking kenyamanan Bankink Hall</h4>
+                                <h4 class="header-title">Form Checking Peralatan Bankink Hall</h4>
                                 <?php 
                                 $datestring = 'Year: %Y Month: %m Day: %d ';
 echo mdate($datestring); ?>
-                                        <form action="<?= base_url('Cabang/tambah_kenyamanan'); ?>" method="post">
+                                        <form action="<?= base_url('Cabang/tambah_peralatan'); ?>" method="post">
                                             <div class="form-group">
                                                 <label for="nama_cabang">Nama Cabang</label>
                                                 <input type="hidden" class="form-control" id="id_pengguna" name="id_pengguna" placeholder="masukan nama cabang.." value="<?= $user['id_pengguna'] ?>">
@@ -103,7 +103,7 @@ echo mdate($datestring); ?>
                                                 <?= form_error('petugas2','<small class="text-danger pl-3 ">','</small>');?>
                                             </div>
                                         <div class="form-group">
-                                            <label class="col-form-label">Tanaman plastik/hidup</label> <br>
+                                            <label class="col-form-label">Panel Valas</label> <br>
                                             <label class="col-form-label">Keberadaan :</label>
 
                                             <select name="O1" class="custom-select" onchange="yesnoCheck1(this);">
@@ -127,16 +127,15 @@ echo mdate($datestring); ?>
                                             <div class="form-group" id="ifYes1" style="display: none;">
                                                 <label class="col-form-label">Kondisi :</label> 
                                                 <select id="K1" name="K1" class="custom-select">
-                                                <option value="Segar & terawat">Segar & terawat</option>
-                                                <option value="Layu">Layu</option>
-                                                <option value="Berdebu">Berdebu</option>
-                                                <option value="Kering">Kering</option>
+                                                <option value="Terisi & Up to date">Terisi & Up to date</option>
+                                                <option value="Terisi, tidak Up to date">Terisi, tidak Up to date</option>
+                                                <option value="Kosong">Kosong</option>
                                             </select><br />
                                             </div>
 
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-form-label">Kursi Tunggu Nasabah</label> <br>
+                                            <label class="col-form-label">Panel Suku Bunga</label> <br>
                                             <label class="col-form-label">Keberadaan :</label>
 
                                             <select name="O2" class="custom-select" onchange="yesnoCheck2(this);">
@@ -160,14 +159,14 @@ echo mdate($datestring); ?>
                                             <div class="form-group" id="ifYes2" style="display: none;">
                                                 <label class="col-form-label">Kondisi :</label> 
                                                 <select id="K2" name="K2" class="custom-select">
-                                                <option value="Bersih & terawat">Bersih & terawat</option>
-                                                <option value="Kotor/Sobek">Kotor/Sobek</option>
+                                                <option value="Terisi & Up to date">Terisi & Up to date</option>
+                                                <option value="Kosong">Kosong</option>
                                             </select><br />
                                             </div>
 
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-form-label">Penyejuk AC</label> <br>
+                                            <label class="col-form-label">Tempat Sampah</label> <br>
                                             <label class="col-form-label">Keberadaan :</label>
 
                                             <select name="O3" class="custom-select" onchange="yesnoCheck3(this);">
@@ -191,14 +190,14 @@ echo mdate($datestring); ?>
                                             <div class="form-group" id="ifYes3" style="display: none;">
                                                 <label class="col-form-label">Kondisi :</label> 
                                                 <select id="K3" name="K3" class="custom-select">
-                                                <option value="Berfungsi">Berfungsi</option>
-                                                <option value="Tidak Berfungsi">Tidak Berfungsi</option>
+                                                <option value="Rapi & bersih">Rapi & bersih</option>
+                                                <option value="Kotor/rusak">Kotor/rusak</option>
                                             </select><br />
                                             </div>
 
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-form-label">Lantai Banking Hall</label> <br>
+                                            <label class="col-form-label">Rak Brosur</label> <br>
                                             <label class="col-form-label">Keberadaan :</label>
 
                                             <select name="O4" class="custom-select" onchange="yesnoCheck4(this);">
@@ -222,15 +221,14 @@ echo mdate($datestring); ?>
                                             <div class="form-group" id="ifYes4" style="display: none;">
                                                 <label class="col-form-label">Kondisi :</label> 
                                                 <select id="K4" name="K4" class="custom-select">
-                                                <option value="Bersih">Bersih</option>
-                                                <option value="Kotor">Kotor</option>
-                                                <option value="Gompel">Gompel</option>
+                                                <option value="Rapi & bersih">Rapi & bersih</option>
+                                                <option value="Kotor/rusak">Kotor/rusak</option>
                                             </select><br />
                                             </div>
 
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-form-label">Dinding Banking Hall</label> <br>
+                                            <label class="col-form-label">Brosur</label> <br>
                                             <label class="col-form-label">Keberadaan :</label>
 
                                             <select name="O5" class="custom-select" onchange="yesnoCheck5(this);">
@@ -254,15 +252,14 @@ echo mdate($datestring); ?>
                                             <div class="form-group" id="ifYes5" style="display: none;">
                                                 <label class="col-form-label">Kondisi :</label> 
                                                 <select id="K5" name="K5" class="custom-select">
-                                                <option value="Bersih">Bersih</option>
-                                                <option value="Kotor">Kotor</option>
-                                                <option value="Gompel/Lapuk">Gompel/Lapuk</option>
+                                                <option value="Rapi">Rapi</option>
+                                                <option value="Berantakan">Berantakan</option>
                                             </select><br />
                                             </div>
 
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-form-label">Lampu</label> <br>
+                                            <label class="col-form-label">Writing Desk</label> <br>
                                             <label class="col-form-label">Keberadaan :</label>
 
                                             <select name="O6" class="custom-select" onchange="yesnoCheck6(this);">
@@ -286,8 +283,71 @@ echo mdate($datestring); ?>
                                             <div class="form-group" id="ifYes6" style="display: none;">
                                                 <label class="col-form-label">Kondisi :</label> 
                                                 <select id="K6" name="K6" class="custom-select">
-                                                <option value="Hidup">Hidup</option>
-                                                <option value="Set lampu yang seharusnya menyala tetapi mati">Set lampu yang seharusnya menyala tetapi mati</option>
+                                                <option value="Rapi & bersih">Rapi & bersih</option>
+                                                <option value="Kotor/rusak">Kotor/rusak</option>
+                                            </select><br />
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-form-label">Slip Transaksi</label> <br>
+                                            <label class="col-form-label">Keberadaan :</label>
+
+                                            <select name="O7" class="custom-select" onchange="yesnoCheck7(this);">
+                                                <option selected="selected"></option>
+                                                <option value="Ada">Ada</option>
+                                                <option value="Tidak Ada">Tidak Ada</option>
+                                            </select>
+                                            <?= form_error('O7','<small class="text-danger pl-3 ">','</small>');?>
+
+                                            <script type="text/javascript">
+                                                function yesnoCheck7(that) {
+                                                    if (that.value == "Ada") {
+                                                        document.getElementById("ifYes7").style.display = "block";
+                                                    } else {
+                                                        document.getElementById("ifYes7").style.display = "none";
+                                                        document.getElementById("K7").value = null;
+                                                    }
+                                                }
+                                            </script>
+
+                                            <div class="form-group" id="ifYes7" style="display: none;">
+                                                <label class="col-form-label">Kondisi :</label> 
+                                                <select id="K7" name="K7" class="custom-select">
+                                                <option value="Rapi & bersih">Rapi & bersih</option>
+                                                <option value="Slip tercampur-campur">Slip tercampur-campur</option>
+                                                <option value="Slip berantakan">Slip berantakan</option>
+                                            </select><br />
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-form-label">Alat Tulis/Pena</label> <br>
+                                            <label class="col-form-label">Keberadaan :</label>
+
+                                            <select name="O8" class="custom-select" onchange="yesnoCheck8(this);">
+                                                <option selected="selected"></option>
+                                                <option value="Ada">Ada</option>
+                                                <option value="Tidak Ada">Tidak Ada</option>
+                                            </select>
+                                            <?= form_error('O8','<small class="text-danger pl-3 ">','</small>');?>
+
+                                            <script type="text/javascript">
+                                                function yesnoCheck8(that) {
+                                                    if (that.value == "Ada") {
+                                                        document.getElementById("ifYes8").style.display = "block";
+                                                    } else {
+                                                        document.getElementById("ifYes8").style.display = "none";
+                                                        document.getElementById("K8").value = null;
+                                                    }
+                                                }
+                                            </script>
+
+                                            <div class="form-group" id="ifYes8" style="display: none;">
+                                                <label class="col-form-label">Kondisi :</label> 
+                                                <select id="K8" name="K8" class="custom-select">
+                                                <option value="Berfungsi">Berfungsi</option>
+                                                <option value="Tidak Berfungsi">Tidak Berfungsi</option>
                                             </select><br />
                                             </div>
 

@@ -24,7 +24,7 @@ class Login extends CI_Controller {
 				if($user['role'] == '1'){
 					if (password_verify($password, $user['password'])) {
                    
-                   $this->session->set_userdata(array('user'=>$userr,'password'=>$password,'role' => $user['role']));
+                   $this->session->set_userdata(array('user'=>$userr,'password'=>$password,'role' => $user['role'], 'id_pengguna' => $user['id_pengguna']));
 					$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert">Welcome '.$userr.' ! </div>');
 					redirect('Welcome');
 
@@ -37,9 +37,9 @@ class Login extends CI_Controller {
 				}else if($user['role'] == '2'){
 					if (password_verify($password, $user['password'])) {
                    
-                   $this->session->set_userdata(array('user'=>$userr,'password'=>$password,'role' => $user['role'],'id_user'=>$user['id_user']));
+                   $this->session->set_userdata(array('user'=>$userr,'password'=>$password,'role' => $user['role'],'id_pengguna'=>$user['id_pengguna']));
 					$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert">Welcome '.$userr.' ! </div>');
-					redirect('Cabang/');
+					redirect('Cabang/dashboard');
 
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
