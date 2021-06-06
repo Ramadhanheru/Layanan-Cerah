@@ -41,6 +41,29 @@ class Cabang extends CI_Controller {
 		$this->load->view('dashboard',$data);
 		$this->load->view('template/footer');
 	}
+	public function print_tgl(){
+			/* Create PDF File*/
+      	$this->load->library('pdf');
+     	$id= $this->session->userdata('id_pengguna');
+     	$bulan = $this->input->post('tgl_awal');
+     	$data['bulan'] = $bulan;
+     	$date=date_create($bulan);
+		$year = date_format($date,"Y");
+		$month = date_format($date,"m");
+		$data ['query']= $this->Model_data->print_berdasarkan_tgl($id,$year,$month);
+		$data['user'] =  $this->db->get_where('pengguna', ['username' => $this->session->userdata('user')])->row_array();
+		$this->load->view('print_briefing',$data,$bulan);
+
+	    $paper_size='Legal';
+	    $orientation='potrait';
+	    $data_header= array('title' => 'Convert to Pdf');
+	    $html = $this->output->get_output();
+	    $this->pdf->set_paper($paper_size, $orientation, $data_header);
+
+	    $this->pdf->load_html($html);
+	    $this->pdf->render();
+	    $this->pdf->stream('Laporan Monitoring Briefing Layanan-Cerah.pdf', array('Attachment' =>0));
+	}
 
 	public function briefing(){
 		$data['user'] =  $this->db->get_where('pengguna', ['username' => $this->session->userdata('user')])->row_array();
@@ -212,6 +235,25 @@ class Cabang extends CI_Controller {
 		$this->load->view('checking_peralatan',$data);
 		$this->load->view('template/footer');
 	}
+	public function print_checking_peralatan($id){
+		/* Create PDF File*/
+      	$this->load->library('pdf');
+		$data ['query']= $this->Model_data->print_checking_peralatan_by_id($id);
+		$data['user'] =  $this->db->get_where('pengguna', ['username' => $this->session->userdata('user')])->row_array();
+		$this->load->view('print_checking_peralatan_by_id',$data);
+
+	    $paper_size='Legal';
+	    $orientation='potrait';
+	    $data_header= array('title' => 'Convert to Pdf');
+	    $html = $this->output->get_output();
+	    $this->pdf->set_paper($paper_size, $orientation, $data_header);
+
+	    $this->pdf->load_html($html);
+	    $this->pdf->render();
+	    $this->pdf->stream('Laporan Checking Peralatan Layanan-Cerah.pdf', array('Attachment' =>0));
+
+	}
+
 	public function tambah_peralatan(){
 		$this->form_validation->set_rules('nama_cabang','nama_cabang','required|trim');
 		$this->form_validation->set_rules('alamat_cabang','alamat_cabang','required|trim');
@@ -279,6 +321,24 @@ class Cabang extends CI_Controller {
 		$this->load->view('checking_kenyamanan',$data);
 		$this->load->view('template/footer');
 	}
+	public function print_checking_kenyamanan($id){
+		/* Create PDF File*/
+      	$this->load->library('pdf');
+		$data ['query']= $this->Model_data->print_checking_kenyamanan_by_id($id);
+		$data['user'] =  $this->db->get_where('pengguna', ['username' => $this->session->userdata('user')])->row_array();
+		$this->load->view('print_checking_kenyamanan_by_id',$data);
+
+	    $paper_size='Legal';
+	    $orientation='potrait';
+	    $data_header= array('title' => 'Convert to Pdf');
+	    $html = $this->output->get_output();
+	    $this->pdf->set_paper($paper_size, $orientation, $data_header);
+
+	    $this->pdf->load_html($html);
+	    $this->pdf->render();
+	    $this->pdf->stream('Laporan Checking kenyamanan Layanan-Cerah.pdf', array('Attachment' =>0));
+
+	}
 	public function tambah_kenyamanan(){
 		$this->form_validation->set_rules('nama_cabang','nama_cabang','required|trim');
 		$this->form_validation->set_rules('alamat_cabang','alamat_cabang','required|trim');
@@ -340,6 +400,24 @@ class Cabang extends CI_Controller {
 		$this->load->view('template/header',$data);
 		$this->load->view('checking_toilet',$data);
 		$this->load->view('template/footer');
+	}
+	public function print_checking_toilet($id){
+		/* Create PDF File*/
+      	$this->load->library('pdf');
+		$data ['query']= $this->Model_data->print_checking_toilet_by_id($id);
+		$data['user'] =  $this->db->get_where('pengguna', ['username' => $this->session->userdata('user')])->row_array();
+		$this->load->view('print_checking_toilet_by_id',$data);
+
+	    $paper_size='Legal';
+	    $orientation='potrait';
+	    $data_header= array('title' => 'Convert to Pdf');
+	    $html = $this->output->get_output();
+	    $this->pdf->set_paper($paper_size, $orientation, $data_header);
+
+	    $this->pdf->load_html($html);
+	    $this->pdf->render();
+	    $this->pdf->stream('Laporan Checking toilet Layanan-Cerah.pdf', array('Attachment' =>0));
+
 	}
 	public function tambah_toilet(){
 		$this->form_validation->set_rules('nama_cabang','nama_cabang','required|trim');
@@ -418,6 +496,24 @@ class Cabang extends CI_Controller {
 		$this->load->view('template/header',$data);
 		$this->load->view('checking_atm',$data);
 		$this->load->view('template/footer');
+	}
+	public function print_checking_atm($id){
+		/* Create PDF File*/
+      	$this->load->library('pdf');
+		$data ['query']= $this->Model_data->print_checking_atm_by_id($id);
+		$data['user'] =  $this->db->get_where('pengguna', ['username' => $this->session->userdata('user')])->row_array();
+		$this->load->view('print_checking_atm_by_id',$data);
+
+	    $paper_size='Legal';
+	    $orientation='potrait';
+	    $data_header= array('title' => 'Convert to Pdf');
+	    $html = $this->output->get_output();
+	    $this->pdf->set_paper($paper_size, $orientation, $data_header);
+
+	    $this->pdf->load_html($html);
+	    $this->pdf->render();
+	    $this->pdf->stream('Laporan Checking atm Layanan-Cerah.pdf', array('Attachment' =>0));
+
 	}
 	public function tambah_atm(){
 		$this->form_validation->set_rules('nama_cabang','nama_cabang','required|trim');

@@ -41,7 +41,7 @@
                                                 <td><?= $q->waktu; ?></td>
                                                 <td><?= $q->petugas1; ?></td>
                                                 <td><?= $q->petugas2; ?></td>
-                                                <td><a href="">Print</a></td>
+                                                <td><a href="<?= base_url('cabang/print_checking_peralatan/').$q->id; ?>" target="_blank">Print</a></td>
                                             </tr>
                                             <?php $no++; } ?>
                                         </tbody>

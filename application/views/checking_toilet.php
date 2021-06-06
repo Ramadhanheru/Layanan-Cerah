@@ -12,7 +12,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="header-title">Table Checking Toilet Banking Hall</h4>
+                                <h4 class="header-title">Table Checking Toilet </h4>
                                 <div class="data-tables datatable-primary">
                                     <table id="dataTable2" class="text-center">
                                         <thead class="text-capitalize">
@@ -41,7 +41,7 @@
                                                 <td><?= $q->waktu; ?></td>
                                                 <td><?= $q->petugas1; ?></td>
                                                 <td><?= $q->petugas2; ?></td>
-                                                <td><a href="">Print</a></td>
+                                                <td><a href="<?= base_url('cabang/print_checking_toilet/').$q->id; ?>" target="_blank">Print</a></td>
                                             </tr>
                                             <?php $no++; } ?>
                                         </tbody>
@@ -55,7 +55,7 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="header-title">Form Checking toilet Bankink Hall</h4>
+                                <h4 class="header-title">Form Checking Toilet </h4>
                                 <?php 
                                 $datestring = 'Year: %Y Month: %m Day: %d ';
 echo mdate($datestring); ?>

@@ -39,16 +39,6 @@
                                             
                                         </div>
                                     </div>
-                                    <div class="tst-item">
-                                        <div class="tstu-img">
-                                            <img src="<?= base_url('asset/'); ?>assets/images/team/team-author3.jpg" alt="author image">
-                                        </div>
-                                        <div class="tstu-content">
-                                            <h4 class="tstu-name">Abel Franecki</h4>
-                                            <span class="profsn">Designer</span>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae laborum ut nihil numquam a aliquam alias necessitatibus ipsa soluta quam!</p>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -59,6 +49,16 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="header-title">Table Monitoring Morning & Afternoon Briefing</h4>
+                                <div class="col-6">
+                                <form action="<?= base_url('cabang/print_tgl') ?>" method="post" target="_blank">
+                                    <div class="input-group mb-3">
+                                    <input type="month" class="form-control"  name="tgl_awal">
+                                        <div class="input-group-append">
+                                        <input class="btn btn-primary" type="submit" name="print"  value="Print" >
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
                                 <div class="data-tables datatable-primary">
                                     <table id="dataTable2" class="text-center">
                                         <thead class="text-capitalize">
@@ -73,7 +73,6 @@
                                                 <th>Waktu</th>
                                                 <th>Foto</th>
                                                 <th>Keterangan</th>
-                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -91,7 +90,6 @@
                                                 <td><?= $q->waktu2; ?></td>
                                                 <td><img src="<?= base_url('uploadfile/').$q->foto2; ?>" width="100"></td>
                                                 <td><?= $q->keterangan; ?></td>
-                                                <td><a href="">Print</a></td>
                                             </tr>
                                             <?php $no++; } ?>
                                         </tbody>

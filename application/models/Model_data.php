@@ -102,4 +102,27 @@ class Model_data extends CI_Model
 		return $this->db->get();
 	}
 
+	public function print_berdasarkan_tgl($id,$year,$month){
+
+		$query = $this->db->query("SELECT * FROM briefing WHERE YEAR(tanggal) = $year AND MONTH(tanggal) = $month;");
+		return $query;
+	}
+
+	public function print_checking_peralatan_by_id($id){
+		return $this->db->get_where('checking_peralatan',['id'=> $id])->row_array();
+
+	}
+	public function print_checking_kenyamanan_by_id($id){
+		return $this->db->get_where('checking_kenyamanan',['id'=> $id])->row_array();
+
+	}
+	public function print_checking_toilet_by_id($id){
+		return $this->db->get_where('checking_toilet',['id'=> $id])->row_array();
+
+	}
+	public function print_checking_atm_by_id($id){
+		return $this->db->get_where('checking_atm',['id'=> $id])->row_array();
+
+	}
+
 }
