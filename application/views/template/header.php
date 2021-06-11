@@ -6,7 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Layanan Cerah App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="<?= base_url('asset/'); ?>assets/images/icon/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="<?= base_url('asset/'); ?>assets/images/icon/logoo_X3q_icon.ico">
     <link rel="stylesheet" href="<?= base_url('asset/'); ?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url('asset/'); ?>assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?= base_url('asset/'); ?>assets/css/themify-icons.css">
@@ -55,12 +55,12 @@
                                 <li <?= $this->uri->segment(2) == 'dashboard' ? 'class="active"' : '' ?>>
                                 <a href="<?= base_url('cabang/dashboard') ?>"><i class="ti-dashboard"></i><span>Dashboard</span></a>
                             </li>
-                            <li <?= $this->uri->segment(2) == 'briefing' ? 'class="active"' : '' ?>><a href="<?= base_url('cabang/briefing') ?>"><i class="ti-map-alt"></i> <span>Absensi Briefing</span></a></li>
+                            <li <?= $this->uri->segment(2) == 'briefing' ? 'class="active"' : '' ?>><a href="<?= base_url('cabang/briefing') ?>"><i class="ti-hand-open"></i> <span>Absensi Briefing</span></a></li>
                             <li <?= $this->uri->segment(2) == 'checking_peralatan' ||
                                     $this->uri->segment(2) == 'checking_kenyamanan' ||
                                     $this->uri->segment(2) == 'checking_toilet' ||
                                     $this->uri->segment(2) == 'checking_atm' ? 'class="active"' : '' ?>>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-blackboard"></i>
                                     <span>Implementasi Layanan Cerah</span></a>
                                 <ul class="collapse">
                                     <li <?= $this->uri->segment(2) == 'checking_peralatan' ?  'class="active"' : '' ?>><a href="<?= base_url('cabang/checking_peralatan'); ?>">Peralatan Banking Hall</a></li>
@@ -69,24 +69,29 @@
                                     <li <?= $this->uri->segment(2) == 'checking_atm' ?  'class="active"' : '' ?>><a href="<?= base_url('cabang/checking_atm'); ?>">Checking Atm</a></li>
                                 </ul>
                             </li>
-                            <li><a href="<?= base_url('Login/logout') ?>"><i class="ti-map-alt"></i> <span>Log Out</span></a></li>
+                            <li><a href="<?= base_url('Login/logout') ?>"><i class="ti-power-off"></i> <span>Log Out</span></a></li>
                             <?php } ?>
                             <?php if($this->session->userdata('role') == 1){ ?>
-                                <li class="active">
-                                <a href="#"><i class="ti-dashboard"></i><span>Dashboard</span></a>
+                                <li <?= $this->uri->segment(2) == '' || $this->uri->segment(2) == 'dashboard' ? 'class="active"' : '' ?>>
+                                <a href="<?= base_url('welcome/dashboard'); ?>"><i class="ti-dashboard"></i><span>Dashboard</span></a>
                             </li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Tables</span></a>
+                            <li <?= $this->uri->segment(2) == 'briefing' ? 'class="active"' : '' ?>><a href="<?= base_url('welcome/briefing') ?>"><i class="ti-hand-open"></i> <span>Absensi Briefing</span></a></li>
+                            <li <?= $this->uri->segment(2) == 'checking_peralatan' ||
+                                    $this->uri->segment(2) == 'checking_kenyamanan' ||
+                                    $this->uri->segment(2) == 'checking_toilet' ||
+                                    $this->uri->segment(2) == 'checking_atm' ? 'class="active"' : '' ?>>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-blackboard"></i>
+                                    <span>Implementasi Layanan Cerah</span></a>
                                 <ul class="collapse">
-                                    <li><a href="#">basic table</a></li>
-                                    <li><a href="#">table layout</a></li>
-                                    <li><a href="#">datatable</a></li>
+                                    <li <?= $this->uri->segment(2) == 'checking_peralatan' ?  'class="active"' : '' ?>><a href="<?= base_url('welcome/checking_peralatan'); ?>">Peralatan Banking Hall</a></li>
+                                    <li <?= $this->uri->segment(2) == 'checking_kenyamanan' ?  'class="active"' : '' ?>><a href="<?= base_url('welcome/checking_kenyamanan'); ?>">Kenyamanan Banking Hall</a></li>
+                                    <li <?= $this->uri->segment(2) == 'checking_toilet' ?  'class="active"' : '' ?>><a href="<?= base_url('welcome/checking_toilet'); ?>">Checking Toilet</a></li>
+                                    <li <?= $this->uri->segment(2) == 'checking_atm' ?  'class="active"' : '' ?>><a href="<?= base_url('welcome/checking_atm'); ?>">Checking Atm</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#"><i class="ti-map-alt"></i> <span>maps</span></a></li>
-                            <li><a href="#"><i class="ti-receipt"></i> <span>Invoice Summary</span></a></li>
-                            <li><a href="<?= base_url('Login/logout') ?>"><i class="ti-map-alt"></i> <span>Log Out</span></a></li>
+                            <li <?=$this->uri->segment(2) == 'kantor_cabang' || $this->uri->segment(2) == 'tambah_kantor_cabang' ? 'class="active"' : '' ?>>
+                                <a href="<?= base_url('welcome/kantor_cabang'); ?>"><i class="ti-user"></i> <span>Kantor Cabang</span></a></li>
+                            <li><a href="<?= base_url('Login/logout') ?>"><i class="ti-power-off"></i> <span>Log Out</span></a></li>
                             <?php } ?>
                             
                         </ul>

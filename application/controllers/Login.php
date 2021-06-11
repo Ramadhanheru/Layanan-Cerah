@@ -25,8 +25,8 @@ class Login extends CI_Controller {
 					if (password_verify($password, $user['password'])) {
                    
                    $this->session->set_userdata(array('user'=>$userr,'password'=>$password,'role' => $user['role'], 'id_pengguna' => $user['id_pengguna']));
-					$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert">Welcome '.$userr.' ! </div>');
-					redirect('Welcome');
+					$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert">Welcome '.$userr.' ! <span>Anda Masuk Sebagai Admin.</span> </div>');
+					redirect('Welcome/');
 
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
@@ -38,7 +38,7 @@ class Login extends CI_Controller {
 					if (password_verify($password, $user['password'])) {
                    
                    $this->session->set_userdata(array('user'=>$userr,'password'=>$password,'role' => $user['role'],'id_pengguna'=>$user['id_pengguna']));
-					$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert">Welcome '.$userr.' ! </div>');
+					$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert">Welcome '.$userr.' ! <span>Anda Masuk Sebagai User</span></div>');
 					redirect('Cabang/dashboard');
 
                 } else {
@@ -48,17 +48,8 @@ class Login extends CI_Controller {
                 }
 					
 				}else if($user['role'] == '3'){
-					if (password_verify($password, $user['password'])) {
-                   
-                   $this->session->set_userdata(array('user'=>$userr,'password'=>$password,'role' => $user['role']));
-					$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert">Welcome '.$userr.' ! </div>');
-					redirect('Welcome/');
-
-                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                    Salah Password!</div>');
-                   $this->index();
-                }
+					$this->session->set_flashdata('message','<div class ="alert alert-danger" roles="alert"> Akun Anda sedang di Non-aktifkan ! </div>');
+					$this->index();
 					
 				}else {
 					$this->session->set_flashdata('message','<div class ="alert alert-danger" roles="alert"> Akun Anda tidak terdaftar ! </div>');
@@ -79,13 +70,21 @@ class Login extends CI_Controller {
 	}
 	public function editprofile($id){
 
+		$user = $this->Model_data->ambil_id_profile($id);
 		$data['query1'] = $this->Model_data->ambil_id_profile($id);
+		$cek_username = $_POST['username'];
+			if($cek_username){
+				$this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[pengguna.username]', [
+            'is_unique' => 'This username has already registered!']);
+			}
 		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]', ['min_length' => 'Kata sandi terlalu pendek!']);
 
 		if($this->form_validation->run()==false){
 			$this->e_profile();
 
 		}else{
+
+			
 
 			$cekgambar1 = $_FILES['foto']['name'];
 
@@ -113,13 +112,18 @@ class Login extends CI_Controller {
         }
 			}
 
-		$this->db->set('username', $this->input->post('username'));
+		$cek_username = $_POST['username'];
+			if($cek_username){
+				$this->db->set('username', $this->input->post('username'));
+			}
+		
 		$this->db->set('password', password_hash($this->input->post('password'), PASSWORD_DEFAULT));
 		$this->db->where('id_pengguna', $id);
 		$this->db->update('pengguna');
 		$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil diubah ! 
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
-			redirect('');
+		$this->session->set_userdata(array('user'=>$user['username'],'password'=>$user['password'],'role' => $user['role'],'id_pengguna'=>$user['id_pengguna']));
+			$this->e_profile();
 		}
 
 	}

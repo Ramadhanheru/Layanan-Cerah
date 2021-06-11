@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login - srtdash</title>
+    <title>Layanan Cerah App </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="<?= base_url('') ?>assets/images/icon/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="<?= base_url('asset/') ?>assets/images/icon/logoo_X3q_icon.ico">
     <link rel="stylesheet" href="<?= base_url('asset/') ?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url('asset/') ?>assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?= base_url('asset/') ?>assets/css/themify-icons.css">

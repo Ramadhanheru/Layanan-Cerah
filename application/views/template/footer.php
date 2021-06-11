@@ -1,7 +1,7 @@
  <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+                <p>© Copyright 2021. Layanan - Cerah Application. by Bank SUMSEL BABEL.</p>
             </div>
         </footer>
         <!-- footer area end-->
@@ -51,6 +51,12 @@
     <!-- others plugins -->
     <script src="<?= base_url('asset/'); ?>assets/js/plugins.js"></script>
     <script src="<?= base_url('asset/'); ?>assets/js/scripts.js"></script>
+    <script type="text/javascript">
+        $('.custom-file-input').on('change', function(){
+            let fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').addClass("selected").html(fileName);
+        });
+    </script>
 </body>
 
 </html>

@@ -7,6 +7,8 @@
                             <div class="card-body">
                                 <h4 class="header-title">Profile</h4>
                                  <!-- Start 4 column grid system -->
+                                <?= $this->session->flashdata('message'); ?>
+
                                 <div class="row">
                                     <div class="col-lg-2">
                                             <div class="form-group">
@@ -55,9 +57,9 @@
                                 <div class="row">
                                     <div class="col-lg-8">
                                         <?php if($this->session->userdata('role')==1){ ?>
-                                                <a href="<?= base_url('Welcome') ?>" class="btn btn-warning mt-4 pr-4 pl-4" >Kembali</a>
+                                                <a href="<?= base_url('Welcome/dashboard') ?>" class="btn btn-warning mt-4 pr-4 pl-4" >Kembali</a>
                                             <?php }else{ ?>
-                                                <a href="<?= base_url('Cabang') ?>" class="btn btn-warning mt-4 pr-4 pl-4" >Kembali</a>
+                                                <a href="<?= base_url('Cabang/dashboard') ?>" class="btn btn-warning mt-4 pr-4 pl-4" >Kembali</a>
                                             <?php } ?>
                                         <a href="" class="btn btn-primary mt-4 pr-4 pl-4" data-toggle="modal" data-target="#editprofile">Edit Profile</a>
 
@@ -74,7 +76,12 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Username</label>
                                                 <input type="hidden" class="form-control" id="id" name="id" value="<?= $user['id_pengguna'] ?>" >
-                                                <input type="text" class="form-control" id="username" name="username" value="<?= $user['username'] ?>">
+                                                <input type="text" class="form-control" id="username1" name="username1" value="<?= $user['username'] ?>" readonly>
+                                               
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail2">Username Baru</label>
+                                                <input type="text" class="form-control" id="username" name="username" >
                                                 <?= form_error('username','<small class="text-danger pl-3 ">','</small>');?>
                                             </div>
                                             <div class="form-group">

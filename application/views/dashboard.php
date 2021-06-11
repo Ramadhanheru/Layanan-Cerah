@@ -44,6 +44,7 @@
                         </div>
                     </div>
                     <!-- testimonial area end -->
+                    <?php if($this->session->userdata('role')==2){ ?>
                     <!-- Primary table start -->
                     <div class="col-12 mt-5">
                         <div class="card">
@@ -89,7 +90,7 @@
                                                 <td><?= $q->afternoon; ?></td>
                                                 <td><?= $q->waktu2; ?></td>
                                                 <td><img src="<?= base_url('uploadfile/').$q->foto2; ?>" width="100"></td>
-                                                <td><?= $q->keterangan; ?></td>
+                                                <td><span class="text-danger"><?= $q->keterangan; ?></td>
                                             </tr>
                                             <?php $no++; } ?>
                                         </tbody>
@@ -99,6 +100,7 @@
                         </div>
                     </div>
                     <!-- Primary table end -->
+                <?php } ?>
                     
                 </div>
             </div>
