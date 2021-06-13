@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		 <link rel="shortcut icon" type="image/png" href="<?= base_url('asset/'); ?>assets/images/icon/logoo_X3q_icon.ico">
 		<title>Laporan Checking ATM Layanan-Cerah</title>
 		<style type="text/css">
 		.tg  {border-collapse:collapse;border-spacing:0;}
@@ -29,14 +30,14 @@
 				<tr >
 					<th class="tg-2c25" width="20%" style="padding: 4;"><span style="font-weight:bold">Nama Cabang/Capem</span></th>
 					<th class="tg-xeyn" width="3%" style="padding: 4;">:</th>
-					<th class="tg-2c25" width="77%" style="padding: 4;"><?= $user['kantor'] ?></th>
+					<th class="tg-2c25" width="77%" style="padding: 4;"><?= $query['kantor'] ?></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td class="tg-2c25" style="padding: 4;"><span style="font-weight:bold">Alamat Cabang/Cabang</span></td>
 					<td class="tg-xeyn" style="padding: 4;">:</td>
-					<td class="tg-2c25" style="padding: 4;"><?= $user['alamat'] ?></td>
+					<td class="tg-2c25" style="padding: 4;"><?= $query['alamat'] ?></td>
 				</tr>
 				<tr>
 					<td class="tg-2c25" style="padding: 4;"><span style="font-weight:bold">Pelaksanaan</span></td>
@@ -224,7 +225,7 @@
 		<table class="tg" style="margin-top: 40px; position: absolute; right: 150;">
 			<tr>
 				<td>Unit Umum dan Akuntansi <br> <br> <br> <br>
-					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<?= $user['nama']; ?>
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<?= $query['nama']; ?>
 				</td>
 			</tr>
 		</table>

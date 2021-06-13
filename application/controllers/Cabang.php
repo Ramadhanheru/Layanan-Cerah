@@ -84,26 +84,35 @@ class Cabang extends CI_Controller {
 		$this->form_validation->set_rules('morning','morning','required|trim');
 		$this->form_validation->set_rules('tanggal','tanggal','required|trim');
 		$this->form_validation->set_rules('waktu1','waktu1','required|trim');
-		if($foto==""){
-			$this->form_validation->set_rules('foto1','foto1','required|trim');
-		}
-		if( $this->form_validation->run()==false){
-			$this->briefing();
+		
+				if( $this->form_validation->run()==false){
+					$this->briefing();
 
-		}else{
-			 $data = [
-			 	'id_pengguna' => $this->input->post('id_pengguna', true),
-                'tanggal' => $this->input->post('tanggal', true),
-                'waktu1' => $this->input->post('waktu1', true),
-                'morning' => $this->input->post('morning', true),
-                'foto1' => $this->uploadfoto1()
-            ];
+				}else{
+					if ($foto) {
+						$data = [
+					 	'id_pengguna' => $this->input->post('id_pengguna', true),
+		                'tanggal' => $this->input->post('tanggal', true),
+		                'waktu1' => $this->input->post('waktu1', true),
+		                'morning' => $this->input->post('morning', true),
+		                'foto1' => $this->uploadfoto1()
+		            ];
+					} else {
+						$data = [
+					 	'id_pengguna' => $this->input->post('id_pengguna', true),
+		                'tanggal' => $this->input->post('tanggal', true),
+		                'waktu1' => $this->input->post('waktu1', true),
+		                'morning' => $this->input->post('morning', true)
+		            ];
+					}
+					
+					 
 
-				$proses = $this->Model_data->tambah_morning_briefing($data);
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
-				redirect('cabang/briefing');
-		}
+						$proses = $this->Model_data->tambah_morning_briefing($data);
+						$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
+						redirect('cabang/briefing');
+				}
 
 			}else{
 
@@ -124,8 +133,8 @@ class Cabang extends CI_Controller {
             ];
 
 				$proses = $this->Model_data->tambah_morning_briefing($data);
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('cabang/briefing');
 		}
 			}
@@ -144,23 +153,30 @@ class Cabang extends CI_Controller {
 		$this->form_validation->set_rules('afternoon','afternoon','required|trim');
 		$this->form_validation->set_rules('tanggal','tanggal','required|trim');
 		$this->form_validation->set_rules('waktu2','waktu2','required|trim');
-		if($foto==""){
-			$this->form_validation->set_rules('foto1','foto1','required|trim');
-		}
+		
 		if( $this->form_validation->run()==false){
 			$this->briefing();
 
 		}else{
-			 $data = [
+			if ($foto) {
+				$data = [
                 'waktu2' => $this->input->post('waktu2', true),
                 'afternoon' => $this->input->post('afternoon', true),
                 'foto2' => $this->uploadfoto2()
             ];
+			} else {
+				$data = [
+                'waktu2' => $this->input->post('waktu2', true),
+                'afternoon' => $this->input->post('afternoon', true)
+            ];
+			}
+			
+			 
 
             	$this->db->where('id', $this->input->post('id'));
 				$this->db->update('briefing', $data);
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('cabang/briefing');
 		}
 
@@ -181,8 +197,8 @@ class Cabang extends CI_Controller {
 
 				$this->db->where('id', $this->input->post('id'));
 				$this->db->update('briefing', $data);
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('cabang/briefing');
 		}
 			}
@@ -303,8 +319,8 @@ class Cabang extends CI_Controller {
             ];
 
 				$proses = $this->Model_data->tambah_peralatan($data);
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('cabang/checking_peralatan');
 		}
 	}
@@ -382,8 +398,8 @@ class Cabang extends CI_Controller {
             ];
 
 				$proses = $this->Model_data->tambah_kenyamanan($data);
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('cabang/checking_kenyamanan');
 		}
 	}
@@ -480,8 +496,8 @@ class Cabang extends CI_Controller {
             ];
 
 				$proses = $this->Model_data->tambah_toilet($data);
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('cabang/checking_toilet');
 		}
 	}
@@ -558,8 +574,8 @@ class Cabang extends CI_Controller {
             ];
 
 				$proses = $this->Model_data->tambah_atm($data);
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('cabang/checking_atm');
 		}
 	}

@@ -187,6 +187,12 @@ class Model_data extends CI_Model
 		$this->db->join('pengguna','pengguna.id_pengguna = checking_peralatan.id_pengguna');
 		return $this->db->get();
 	}
+	public function hapus_checking_peralatan($id)
+	{
+		$this->db->where('id', $id);
+		$query = $this->db->delete('checking_peralatan');
+
+	}
 
 	//////////////////////////////////////////////////////
 	public function tampil_checking_kenyamanan(){
@@ -196,6 +202,12 @@ class Model_data extends CI_Model
 		$this->db->join('pengguna','pengguna.id_pengguna = checking_kenyamanan.id_pengguna');
 		return $this->db->get();
 	}
+	public function hapus_checking_kenyamanan($id)
+	{
+		$this->db->where('id', $id);
+		$query = $this->db->delete('checking_kenyamanan');
+
+	}
 	//////////////////////////////////////////////////////
 	public function tampil_checking_toilet(){
 		$this->db->select('checking_toilet.*, pengguna.nama as nama,
@@ -204,6 +216,12 @@ class Model_data extends CI_Model
 		$this->db->join('pengguna','pengguna.id_pengguna = checking_toilet.id_pengguna');
 		return $this->db->get();
 	}
+	public function hapus_checking_toilet($id)
+	{
+		$this->db->where('id', $id);
+		$query = $this->db->delete('checking_toilet');
+
+	}
 	//////////////////////////////////////////////////////
 	public function tampil_checking_atm(){
 		$this->db->select('checking_atm.*, pengguna.nama as nama,
@@ -211,6 +229,12 @@ class Model_data extends CI_Model
 		$this->db->from('checking_atm');
 		$this->db->join('pengguna','pengguna.id_pengguna = checking_atm.id_pengguna');
 		return $this->db->get();
+	}
+	public function hapus_checking_atm($id)
+	{
+		$this->db->where('id', $id);
+		$query = $this->db->delete('checking_atm');
+
 	}
 
 }

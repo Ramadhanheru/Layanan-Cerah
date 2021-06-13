@@ -112,6 +112,7 @@
                             <span></span>
                             <span></span>
                         </div>
+                       <img src="<?= base_url('asset/'); ?>logo3.png" alt="logo">
                        
                     </div>
                     <!-- profile info & task notification -->
@@ -132,9 +133,48 @@
                         <div class="breadcrumbs-area clearfix ">
                             <!-- <h4 class="page-title pull-left" style=""><?= $this->uri->segment(2); ?></h4> -->
                             <ul class="breadcrumbs pull-left">
-                                <li style="margin-right: 20px;"><span><h4 class="text-dark"><?= $this->uri->segment(2); ?></h4></span></li>
-                                <li><a href="#">Home</a></li>
-                                <li><span><?= $this->uri->segment(2); ?></span></li>
+                               
+                                <li style="margin-right: 20px; "><span><h4 class="text-dark" >
+                                     <?php if ( $this->uri->segment(2) == 'dashboard') {?>
+                                    Dashboard
+                                <?php }elseif ($this->uri->segment(2) == 'briefing') {?>
+                                    Briefing
+                                <?php }elseif ($this->uri->segment(2) == 'checking_peralatan') { ?>
+                                    Checking Peralatan
+                                <?php }elseif ($this->uri->segment(2) == 'checking_kenyamanan') { ?>
+                                    Checking Kenyamanan
+                                <?php }elseif ($this->uri->segment(2) == 'checking_toilet') { ?>
+                                    Checking Toilet
+                                <?php }elseif ($this->uri->segment(2) == 'checking_atm') { ?>
+                                    Checking ATM
+                                <?php }elseif ($this->uri->segment(2) == 'kantor_cabang') { ?>
+                                   Kantor Cabang
+                                <?php }elseif ($this->uri->segment(2) == 'e_profile') { ?>
+                                   Edit Profile
+                                <?php } else {?>
+                                    <?= $this->uri->segment(2)?>
+                               <?php } ?>
+                                </h4></span></li>
+                                <li><a href="<?= base_url($this->uri->segment(1).'/dashboard') ?>">Home</a></li>
+                                <li><span><?php if ( $this->uri->segment(2) == 'dashboard') {?>
+                                    Dashboard
+                                <?php }elseif ($this->uri->segment(2) == 'briefing') {?>
+                                    Briefing
+                                <?php }elseif ($this->uri->segment(2) == 'checking_peralatan') { ?>
+                                    Checking Peralatan
+                                <?php }elseif ($this->uri->segment(2) == 'checking_kenyamanan') { ?>
+                                    Checking Kenyamanan
+                                <?php }elseif ($this->uri->segment(2) == 'checking_toilet') { ?>
+                                    Checking Toilet
+                                <?php }elseif ($this->uri->segment(2) == 'checking_atm') { ?>
+                                    Checking ATM
+                                <?php }elseif ($this->uri->segment(2) == 'kantor_cabang') { ?>
+                                   Kantor Cabang
+                                <?php }elseif ($this->uri->segment(2) == 'e_profile') { ?>
+                                   Edit Profile
+                                <?php } else {?>
+                                    <?= $this->uri->segment(2)?>
+                               <?php } ?></span></li>
                             </ul>
                         </div>
                     </div>

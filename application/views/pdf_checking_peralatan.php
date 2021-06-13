@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		 <link rel="shortcut icon" type="image/png" href="<?= base_url('asset/'); ?>assets/images/icon/logoo_X3q_icon.ico">
 		<title>Laporan Checking Peralatan Layanan-Cerah</title>
 		<style type="text/css">
 		.tg  {border-collapse:collapse;border-spacing:0;}

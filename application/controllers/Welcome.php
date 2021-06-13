@@ -52,8 +52,8 @@ class Welcome extends CI_Controller {
 		$this->db->set('role','2');
          $this->db->where('id_pengguna', $id);
 		$this->db->update('pengguna');
-		$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil diubah ! 
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+		$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil diubah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('welcome/kantor_cabang');
 	}
 	public function role_tidak_aktif($id)
@@ -61,8 +61,8 @@ class Welcome extends CI_Controller {
 		$this->db->set('role','3');
          $this->db->where('id_pengguna', $id);
 		$this->db->update('pengguna');
-		$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil diubah ! 
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+		$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil diubah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('welcome/kantor_cabang');
 	}
 	public function tambah_kantor_cabang(){
@@ -93,8 +93,8 @@ class Welcome extends CI_Controller {
             ];
 
 				$proses = $this->Model_data->tambah_kantor_cabang($data);
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('welcome/kantor_cabang');
 		}
 		
@@ -115,17 +115,41 @@ class Welcome extends CI_Controller {
 	}
 
 	public function hapus_kantor_cabang($id){
-		$data = $this->Model_data->hapus_kantor_cabang($id);
-		if (!$data) {
-			$this->session->set_flashdata('message','<div class ="alert alert-success " roles="alert"> Data berhasil dihapus ! 
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
-			redirect('welcome/kantor_cabang');
+		$briefing = $this->db->get_where('briefing', ['id_pengguna' => $id])->row_array();
+		$peralatan = $this->db->get_where('checking_peralatan', ['id_pengguna' => $id])->row_array();
+		$kenyamanan = $this->db->get_where('checking_kenyamanan', ['id_pengguna' => $id])->row_array();
+		$toilet = $this->db->get_where('checking_toilet', ['id_pengguna' => $id])->row_array();
+		$atm = $this->db->get_where('checking_atm', ['id_pengguna' => $id])->row_array();
+		if ($briefing) {
+			$this->session->set_flashdata('message','<div class ="alert alert-danger  " roles="alert"><h6> Data gagal dihapus ! dikarenakan data sedang dipakai di Absensi Briefing <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
+				redirect('welcome/kantor_cabang');
+		}elseif ($peralatan) {
+			$this->session->set_flashdata('message','<div class ="alert alert-danger  " roles="alert"><h6> Data gagal dihapus ! dikarenakan data sedang dipakai di Checking Peralatan <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
+				redirect('welcome/kantor_cabang');
+		}elseif ($kenyamanan) {
+			$this->session->set_flashdata('message','<div class ="alert alert-danger  " roles="alert" Data gagal dihapus ! dikarenakan data sedang dipakai di Checking Kenyamanan <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
+				redirect('welcome/kantor_cabang');
+		}elseif ($toilet) {
+			$this->session->set_flashdata('message','<div class ="alert alert-danger  " roles="alert"><h6> Data gagal dihapus ! dikarenakan data sedang dipakai di Checking Toilet  <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
+				redirect('welcome/kantor_cabang');
+		}elseif ($atm) {
+			$this->session->set_flashdata('message','<div class ="alert alert-danger  " roles="alert"><h6> Data gagal dihapus ! dikarenakan data sedang dipakai di Checking ATM <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
+				redirect('welcome/kantor_cabang');
 		} else {
-			$this->session->set_flashdata('message','<div class ="alert alert-danger  " roles="alert"> Data gagal dihapus ! 
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
-			redirect('welcome/kantor_cabang');
-			
+				$data = $this->Model_data->hapus_kantor_cabang($id);
+			if (!$data) {
+				$this->session->set_flashdata('message','<div class ="alert alert-success " roles="alert"><h6> Data berhasil dihapus ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
+				redirect('welcome/kantor_cabang');
+			} else {
+				$this->session->set_flashdata('message','<div class ="alert alert-danger  " roles="alert"><h6> Data gagal dihapus ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
+				redirect('welcome/kantor_cabang');
+				
+			}
 		}
+		
+		
 	}
 	public function edit_kantor_cabang($id){
 		$data['user'] =  $this->db->get_where('pengguna', ['id_pengguna' => $id])->row_array();
@@ -177,8 +201,8 @@ class Welcome extends CI_Controller {
 		$this->db->set($data);
 		$this->db->where('id_pengguna', $id);
 		$this->db->update('pengguna');
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('welcome/kantor_cabang');
 		}
 
@@ -205,6 +229,8 @@ class Welcome extends CI_Controller {
 		$this->load->view('excel_kantor_cabang',$data);
 	}
 
+
+
 	//////////////////////////////////////////////////////////////////
 	// Briefing
 
@@ -218,12 +244,12 @@ class Welcome extends CI_Controller {
 	public function hapus_briefing($id){
 		$data = $this->Model_data->hapus_briefing($id);
 		if (!$data) {
-			$this->session->set_flashdata('message','<div class ="alert alert-success " roles="alert"> Data berhasil dihapus ! 
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+			$this->session->set_flashdata('message','<div class ="alert alert-success " roles="alert"><h6> Data berhasil dihapus ! 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 			redirect('welcome/briefing');
 		} else {
-			$this->session->set_flashdata('message','<div class ="alert alert-danger  " roles="alert"> Data gagal dihapus ! 
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+			$this->session->set_flashdata('message','<div class ="alert alert-danger  " roles="alert"><h6> Data gagal dihapus ! 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 			redirect('welcome/briefing');
 			
 		}
@@ -272,8 +298,8 @@ class Welcome extends CI_Controller {
 		$this->db->set($data);
 		$this->db->where('id', $id);
 		$this->db->update('briefing');
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('welcome/briefing');
 		}
 		}
@@ -353,22 +379,22 @@ class Welcome extends CI_Controller {
             	$this->db->set($data);
 				$this->db->where('id', $id);
 				$this->db->update('checking_peralatan');
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('welcome/checking_peralatan');
 		}
 
 		}
-		public function hapus_checking($id){
-		$data = $this->Model_data->hapus_checking($id);
+		public function hapus_checking_peralatan($id){
+		$data = $this->Model_data->hapus_checking_peralatan($id);
 		if (!$data) {
-			$this->session->set_flashdata('message','<div class ="alert alert-success " roles="alert"> Data berhasil dihapus ! 
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
-			redirect('welcome/checking');
+			$this->session->set_flashdata('message','<div class ="alert alert-success " roles="alert"><h6> Data berhasil dihapus ! 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
+			redirect('welcome/checking_peralatan');
 		} else {
-			$this->session->set_flashdata('message','<div class ="alert alert-danger  " roles="alert"> Data gagal dihapus ! 
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
-			redirect('welcome/checking');
+			$this->session->set_flashdata('message','<div class ="alert alert-danger  " roles="alert"><h6> Data gagal dihapus ! 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
+			redirect('welcome/checking_peralatan');
 			
 		}
 	}
@@ -448,8 +474,8 @@ class Welcome extends CI_Controller {
             	$this->db->set($data);
 				$this->db->where('id', $id);
 				$this->db->update('checking_kenyamanan');
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('welcome/checking_kenyamanan');
 		}
 
@@ -457,12 +483,12 @@ class Welcome extends CI_Controller {
 		public function hapus_checking_kenyamanan($id){
 		$data = $this->Model_data->hapus_checking_kenyamanan($id);
 		if (!$data) {
-			$this->session->set_flashdata('message','<div class ="alert alert-success " roles="alert"> Data berhasil dihapus ! 
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+			$this->session->set_flashdata('message','<div class ="alert alert-success " roles="alert"><h6> Data berhasil dihapus ! 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 			redirect('welcome/checking_kenyamanan');
 		} else {
-			$this->session->set_flashdata('message','<div class ="alert alert-danger  " roles="alert"> Data gagal dihapus ! 
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+			$this->session->set_flashdata('message','<div class ="alert alert-danger  " roles="alert"><h6> Data gagal dihapus ! 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 			redirect('welcome/checking_kenyamanan');
 			
 		}
@@ -542,8 +568,8 @@ class Welcome extends CI_Controller {
             	$this->db->set($data);
 				$this->db->where('id', $id);
 				$this->db->update('checking_toilet');
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('welcome/checking_toilet');
 		}
 
@@ -551,13 +577,107 @@ class Welcome extends CI_Controller {
 		public function hapus_checking_toilet($id){
 		$data = $this->Model_data->hapus_checking_toilet($id);
 		if (!$data) {
-			$this->session->set_flashdata('message','<div class ="alert alert-success " roles="alert"> Data berhasil dihapus ! 
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+			$this->session->set_flashdata('message','<div class ="alert alert-success " roles="alert"><h6> Data berhasil dihapus ! 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 			redirect('welcome/checking_toilet');
 		} else {
-			$this->session->set_flashdata('message','<div class ="alert alert-danger  " roles="alert"> Data gagal dihapus ! 
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+			$this->session->set_flashdata('message','<div class ="alert alert-danger  " roles="alert"><h6> Data gagal dihapus ! 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 			redirect('welcome/checking_toilet');
+			
+		}
+	}
+	//////////////////////////////////////////////////////////////////////////////
+
+		public function checking_atm(){
+		$data['user'] =  $this->db->get_where('pengguna', ['username' => $this->session->userdata('user')])->row_array();
+		// $data['objek'] = $this->db->get('objek_checking');
+		// $data['kondisi'] = $this->db->get('kondisi_checking');
+		// $id= $this->session->userdata('id_pengguna');
+		
+		$data['query'] = $this->Model_data->tampil_checking_atm();
+
+		$this->load->view('template/header',$data);
+		$this->load->view('checking_atm',$data);
+		$this->load->view('template/footer');
+	}
+
+	public function pdf_checking_atm(){
+		/* Create PDF File*/
+      	$this->load->library('pdf');
+		$data ['query']= $this->Model_data->tampil_checking_atm();
+		$data['user'] =  $this->db->get_where('pengguna', ['username' => $this->session->userdata('user')])->row_array();
+		$this->load->view('pdf_checking_atm',$data);
+
+	    $paper_size='Legal';
+	    $orientation='potrait';
+	    $data_header= array('title' => 'Convert to Pdf');
+	    $html = $this->output->get_output();
+	    $this->pdf->set_paper($paper_size, $orientation, $data_header);
+
+	    $this->pdf->load_html($html);
+	    $this->pdf->render();
+	    $this->pdf->stream('Laporan Checking atm Layanan-Cerah.pdf', array('Attachment' =>0));
+
+	}
+	public function print_checking_atm($id){
+		/* Create PDF File*/
+      	$this->load->library('pdf');
+		$data ['query']= $this->Model_data->print_checking_atm_by_id($id);
+		$data['user'] =  $this->db->get_where('pengguna', ['username' => $this->session->userdata('user')])->row_array();
+		$this->load->view('print_checking_atm_by_id',$data);
+
+	    $paper_size='Legal';
+	    $orientation='potrait';
+	    $data_header= array('title' => 'Convert to Pdf');
+	    $html = $this->output->get_output();
+	    $this->pdf->set_paper($paper_size, $orientation, $data_header);
+
+	    $this->pdf->load_html($html);
+	    $this->pdf->render();
+	    $this->pdf->stream('Laporan Checking atm Layanan-Cerah.pdf', array('Attachment' =>0));
+
+	}
+	public function edit_checking_atm($id){
+
+		$data['query'] = $this->Model_data->tampil_checking_atm();
+		$this->form_validation->set_rules('hari','hari','required|trim');
+		$this->form_validation->set_rules('tanggal','tanggal','required|trim');
+		$this->form_validation->set_rules('waktu','waktu','required|trim');
+		$this->form_validation->set_rules('petugas1','petugas1','required|trim');
+		$this->form_validation->set_rules('petugas2','petugas2','required|trim');
+		if( $this->form_validation->run()==false){
+			$this->checking_atm();
+
+		}else{
+
+			$data = [
+                'hari' => $this->input->post('hari', true),
+                'tanggal' => $this->input->post('tanggal', true),
+                'waktu' => $this->input->post('waktu', true),
+                'petugas1' => $this->input->post('petugas1', true),
+                'petugas2' => $this->input->post('petugas2', true)
+            ];
+
+            	$this->db->set($data);
+				$this->db->where('id', $id);
+				$this->db->update('checking_atm');
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
+				redirect('welcome/checking_atm');
+		}
+
+		}
+		public function hapus_checking_atm($id){
+		$data = $this->Model_data->hapus_checking_atm($id);
+		if (!$data) {
+			$this->session->set_flashdata('message','<div class ="alert alert-success " roles="alert"><h6> Data berhasil dihapus ! 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
+			redirect('welcome/checking_atm');
+		} else {
+			$this->session->set_flashdata('message','<div class ="alert alert-danger  " roles="alert"><h6> Data gagal dihapus ! 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
+			redirect('welcome/checking_atm');
 			
 		}
 	}

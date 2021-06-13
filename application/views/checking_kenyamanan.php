@@ -164,22 +164,22 @@
         <div class="col-12 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title">Form Checking kenyamanan Bankink Hall</h4>
+                    <h4 class="header-title">Form Checking kenyamanan Banking Hall</h4>
                     <?php
                     $datestring = 'Year: %Y Month: %m Day: %d ';
                     echo mdate($datestring); ?>
                     <form action="<?= base_url('Cabang/tambah_kenyamanan'); ?>" method="post">
                         <div class="form-group">
-                            <label for="nama_cabang">Nama Cabang</label>
+                            <label for="nama_cabang"><b class="text-dark">Nama Cabang</b></label>
                             <input type="hidden" class="form-control" id="id_pengguna" name="id_pengguna" placeholder="masukan nama cabang.." value="<?= $user['id_pengguna'] ?>">
                             <input type="text" class="form-control" id="nama_cabang" name="nama_cabang" placeholder="masukan nama cabang.." value="<?=$user['kantor']; ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="alamat_cabang">Alamat Cabang</label>
+                            <label for="alamat_cabang"><b class="text-dark">Alamat Cabang</b></label>
                             <input type="text" class="form-control" id="alamat_cabang" name="alamat_cabang" placeholder="masukan alamat cabang.." value="<?=$user['kantor']; ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Hari</label>
+                            <label class="col-form-label"><b class="text-dark">Hari</b></label>
                             <select name="hari" class="custom-select">
                                 <option selected="selected" value="Senin">Senin</option>
                                 <option value="Selasa">Selasa</option>
@@ -190,28 +190,28 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="example-date-input" class="col-form-label">Tanggal</label>
+                            <label for="example-date-input" class="col-form-label"><b class="text-dark">Tanggal</b></label>
                             <input class="form-control" type="date" id="tanggal" name="tanggal">
                             <?= form_error('tanggal','<small class="text-danger pl-3 ">','</small>');?>
                         </div>
                         <div class="form-group">
-                            <label for="example-time-input" class="col-form-label">Time</label>
+                            <label for="example-time-input" class="col-form-label"><b class="text-dark">Time</b></label>
                             <input class="form-control" type="time" id="waktu" name="waktu">
                             <?= form_error('waktu','<small class="text-danger pl-3 ">','</small>');?>
                         </div>
                         <div class="form-group">
-                            <label for="petugas1">Nama Petugas 1</label>
+                            <label for="petugas1"><b class="text-dark">Nama Petugas 1</b></label>
                             <input type="text" class="form-control" id="petugas1" name="petugas1" aria-describedby="emailHelp" placeholder="masukan nama petugas..">
                             <?= form_error('petugas1','<small class="text-danger pl-3 ">','</small>');?>
                             
                         </div>
                         <div class="form-group">
-                            <label for="petugas2">Nama Petugas 2</label>
+                            <label for="petugas2"><b class="text-dark">Nama Petugas 2</b></label>
                             <input type="text" class="form-control" id="petugas2" name="petugas2" aria-describedby="emailHelp" placeholder="masukan nama petugas..">
                             <?= form_error('petugas2','<small class="text-danger pl-3 ">','</small>');?>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Tanaman plastik/hidup</label> <br>
+                            <label class="col-form-label"><b class="text-dark">Tanaman plastik/hidup</b></label> <br>
                             <label class="col-form-label">Keberadaan :</label>
                             <select name="O1" class="custom-select" onchange="yesnoCheck1(this);">
                                 <option selected="selected"></option>
@@ -240,7 +240,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Kursi Tunggu Nasabah</label> <br>
+                            <label class="col-form-label"><b class="text-dark">Kursi Tunggu Nasabah</b></label> <br>
                             <label class="col-form-label">Keberadaan :</label>
                             <select name="O2" class="custom-select" onchange="yesnoCheck2(this);">
                                 <option selected="selected"></option>
@@ -267,7 +267,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Penyejuk AC</label> <br>
+                            <label class="col-form-label"><b class="text-dark">Penyejuk AC</b></label> <br>
                             <label class="col-form-label">Keberadaan :</label>
                             <select name="O3" class="custom-select" onchange="yesnoCheck3(this);">
                                 <option selected="selected"></option>
@@ -294,7 +294,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Lantai Banking Hall</label> <br>
+                            <label class="col-form-label"><b class="text-dark">Lantai Banking Hall</b></label> <br>
                             <label class="col-form-label">Keberadaan :</label>
                             <select name="O4" class="custom-select" onchange="yesnoCheck4(this);">
                                 <option selected="selected"></option>
@@ -322,7 +322,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Dinding Banking Hall</label> <br>
+                            <label class="col-form-label"><b class="text-dark">Dinding Banking Hall</b></label> <br>
                             <label class="col-form-label">Keberadaan :</label>
                             <select name="O5" class="custom-select" onchange="yesnoCheck5(this);">
                                 <option selected="selected"></option>
@@ -350,7 +350,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Lampu</label> <br>
+                            <label class="col-form-label"><b class="text-dark">Lampu</b></label> <br>
                             <label class="col-form-label">Keberadaan :</label>
                             <select name="O6" class="custom-select" onchange="yesnoCheck6(this);">
                                 <option selected="selected"></option>

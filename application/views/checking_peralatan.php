@@ -172,16 +172,16 @@
                     echo mdate($datestring); ?>
                     <form action="<?= base_url('Cabang/tambah_peralatan'); ?>" method="post">
                         <div class="form-group">
-                            <label for="nama_cabang">Nama Cabang</label>
+                            <label  for="nama_cabang" ><b class="text-dark"> Nama Cabang</b></label>
                             <input type="hidden" class="form-control" id="id_pengguna" name="id_pengguna" placeholder="masukan nama cabang.." value="<?= $user['id_pengguna'] ?>">
                             <input type="text" class="form-control" id="nama_cabang" name="nama_cabang" placeholder="masukan nama cabang.." value="<?=$user['kantor']; ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="alamat_cabang">Alamat Cabang</label>
+                            <label for="alamat_cabang"><b class="text-dark">Alamat Cabang</b></label>
                             <input type="text" class="form-control" id="alamat_cabang" name="alamat_cabang" placeholder="masukan alamat cabang.." value="<?=$user['kantor']; ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Hari</label>
+                            <label class="col-form-label"><b class="text-dark">Hari</label>
                             <select name="hari" class="custom-select">
                                 <option selected="selected" value="Senin">Senin</option>
                                 <option value="Selasa">Selasa</option>
@@ -192,28 +192,28 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="example-date-input" class="col-form-label">Tanggal</label>
+                            <label for="example-date-input" class="col-form-label"><b class="text-dark">Tanggal</b></label>
                             <input class="form-control" type="date" id="tanggal" name="tanggal">
                             <?= form_error('tanggal','<small class="text-danger pl-3 ">','</small>');?>
                         </div>
                         <div class="form-group">
-                            <label for="example-time-input" class="col-form-label">Time</label>
+                            <label for="example-time-input" class="col-form-label"><b class="text-dark">Time</b></label>
                             <input class="form-control" type="time" id="waktu" name="waktu">
                             <?= form_error('waktu','<small class="text-danger pl-3 ">','</small>');?>
                         </div>
                         <div class="form-group">
-                            <label for="petugas1">Nama Petugas 1</label>
+                            <label for="petugas1"><b class="text-dark">Nama Petugas 1</b></label>
                             <input type="text" class="form-control" id="petugas1" name="petugas1" aria-describedby="emailHelp" placeholder="masukan nama petugas..">
                             <?= form_error('petugas1','<small class="text-danger pl-3 ">','</small>');?>
                             
                         </div>
                         <div class="form-group">
-                            <label for="petugas2">Nama Petugas 2</label>
+                            <label for="petugas2"><b class="text-dark">Nama Petugas 2</b></label>
                             <input type="text" class="form-control" id="petugas2" name="petugas2" aria-describedby="emailHelp" placeholder="masukan nama petugas..">
                             <?= form_error('petugas2','<small class="text-danger pl-3 ">','</small>');?>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Panel Valas</label> <br>
+                            <label class="col-form-label"><b class="text-dark">Panel Valas</b></label> <br>
                             <label class="col-form-label">Keberadaan :</label>
                             <select name="O1" class="custom-select" onchange="yesnoCheck1(this);">
                                 <option selected="selected"></option>
@@ -241,7 +241,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Panel Suku Bunga</label> <br>
+                            <label class="col-form-label"><b class="text-dark">Panel Suku Bunga</b></label> <br>
                             <label class="col-form-label">Keberadaan :</label>
                             <select name="O2" class="custom-select" onchange="yesnoCheck2(this);">
                                 <option selected="selected"></option>
@@ -268,7 +268,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Tempat Sampah</label> <br>
+                            <label class="col-form-label"><b class="text-dark">Tempat Sampah</b></label> <br>
                             <label class="col-form-label">Keberadaan :</label>
                             <select name="O3" class="custom-select" onchange="yesnoCheck3(this);">
                                 <option selected="selected"></option>
@@ -295,7 +295,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Rak Brosur</label> <br>
+                            <label class="col-form-label"><b class="text-dark">Rak Brosur</b></label> <br>
                             <label class="col-form-label">Keberadaan :</label>
                             <select name="O4" class="custom-select" onchange="yesnoCheck4(this);">
                                 <option selected="selected"></option>
@@ -322,7 +322,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Brosur</label> <br>
+                            <label class="col-form-label"><b class="text-dark">Brosur</b></label> <br>
                             <label class="col-form-label">Keberadaan :</label>
                             <select name="O5" class="custom-select" onchange="yesnoCheck5(this);">
                                 <option selected="selected"></option>
@@ -349,7 +349,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Writing Desk</label> <br>
+                            <label class="col-form-label"><b class="text-dark">Writing Desk</b></label> <br>
                             <label class="col-form-label">Keberadaan :</label>
                             <select name="O6" class="custom-select" onchange="yesnoCheck6(this);">
                                 <option selected="selected"></option>
@@ -376,7 +376,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Slip Transaksi</label> <br>
+                            <label class="col-form-label"><b class="text-dark">Slip Transaksi</b></label> <br>
                             <label class="col-form-label">Keberadaan :</label>
                             <select name="O7" class="custom-select" onchange="yesnoCheck7(this);">
                                 <option selected="selected"></option>
@@ -404,7 +404,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Alat Tulis/Pena</label> <br>
+                            <label class="col-form-label"><b class="text-dark">Alat Tulis/Pena</b></label> <br>
                             <label class="col-form-label">Keberadaan :</label>
                             <select name="O8" class="custom-select" onchange="yesnoCheck8(this);">
                                 <option selected="selected"></option>

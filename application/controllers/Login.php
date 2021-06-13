@@ -25,12 +25,12 @@ class Login extends CI_Controller {
 					if (password_verify($password, $user['password'])) {
                    
                    $this->session->set_userdata(array('user'=>$userr,'password'=>$password,'role' => $user['role'], 'id_pengguna' => $user['id_pengguna']));
-					$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert">Welcome '.$userr.' ! <span>Anda Masuk Sebagai Admin.</span> </div>');
+					$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6>Welcome '.$userr.' ! <span>Anda Masuk Sebagai Admin.</span></h6> </div>');
 					redirect('Welcome/');
 
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                    Salah Password!</div>');
+                    <h6>Salah Password!</h6></div>');
                    $this->index();
                 }
 					
@@ -38,21 +38,21 @@ class Login extends CI_Controller {
 					if (password_verify($password, $user['password'])) {
                    
                    $this->session->set_userdata(array('user'=>$userr,'password'=>$password,'role' => $user['role'],'id_pengguna'=>$user['id_pengguna']));
-					$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert">Welcome '.$userr.' ! <span>Anda Masuk Sebagai User</span></div>');
+					$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6>Welcome '.$userr.' ! <span>Anda Masuk Sebagai User</span></h6></div>');
 					redirect('Cabang/dashboard');
 
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                    Salah Password!</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"><h6>
+                    Salah Password!</h6></div>');
                    $this->index();
                 }
 					
 				}else if($user['role'] == '3'){
-					$this->session->set_flashdata('message','<div class ="alert alert-danger" roles="alert"> Akun Anda sedang di Non-aktifkan ! </div>');
+					$this->session->set_flashdata('message','<div class ="alert alert-danger" roles="alert"><h6> Akun Anda sedang di Non-aktifkan !</h6> </div>');
 					$this->index();
 					
 				}else {
-					$this->session->set_flashdata('message','<div class ="alert alert-danger" roles="alert"> Akun Anda tidak terdaftar ! </div>');
+					$this->session->set_flashdata('message','<div class ="alert alert-danger" roles="alert"><h6> Akun Anda tidak terdaftar ! </h6></div>');
 					$this->index();
 				}
 				
@@ -120,8 +120,9 @@ class Login extends CI_Controller {
 		$this->db->set('password', password_hash($this->input->post('password'), PASSWORD_DEFAULT));
 		$this->db->where('id_pengguna', $id);
 		$this->db->update('pengguna');
-		$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil diubah ! 
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+		$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil diubah ! 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
+		$user = $this->Model_data->ambil_id_profile($id);
 		$this->session->set_userdata(array('user'=>$user['username'],'password'=>$user['password'],'role' => $user['role'],'id_pengguna'=>$user['id_pengguna']));
 			$this->e_profile();
 		}
@@ -133,7 +134,7 @@ class Login extends CI_Controller {
 	public function logout(){
 		unset($role);
 		$this->session->sess_destroy();
-		$this->session->set_flashdata('message','<div class ="alert alert-warning" roles="alert"> Log out berhasil </div>');
+		$this->session->set_flashdata('message','<div class ="alert alert-warning" roles="alert"><h6> Log out berhasil </h6></div>');
 		 $this->index();
 	}
 }

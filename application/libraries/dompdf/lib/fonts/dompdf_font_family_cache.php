@@ -80,4 +80,7 @@
   'fontawesome' => array(
     'normal' => $fontDir . '\43ed29441a44386a5b3b93c46e9b6448',
   ),
+  'themify' => array(
+    'normal' => $fontDir . '\0e8aee3426ec693536ee251571b78215',
+  ),
 ) ?>

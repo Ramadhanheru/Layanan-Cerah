@@ -239,13 +239,13 @@
                                         <?php if($query1['tanggal'] && $query1['id_pengguna'] && $query1['morning'] && $query1['afternoon']){ ?>
                                             <!-- 111 -->
                                             <div class="alert alert-success" role="alert">
-                                            <h4 class="alert-heading">Well done!</h4>
+                                            <h4 class="alert-heading">Success!</h4>
                                             <p>Anda sudah mengisi Form Morning Briefing Hari ini.</p>
                                             <hr>
                                             <p class="mb-0">Layanan Cerah by Bank Sumsel Babel.</p>
                                         </div>
                                         <div class="alert alert-success" role="alert">
-                                            <h4 class="alert-heading">Well done!</h4>
+                                            <h4 class="alert-heading">Success!</h4>
                                             <p>Anda sudah mengisi Form Afternoon Briefing Hari ini.</p>
                                             <hr>
                                             <p class="mb-0">Layanan Cerah by Bank Sumsel Babel.</p>
@@ -254,7 +254,7 @@
                                     <?php }elseif ($query1['tanggal'] && $query1['id_pengguna'] && $query1['morning'] == "Ya" && $query1['afternoon']=="") { ?>
                                         <!-- 222 -->
                                         <div class="alert alert-success" role="alert">
-                                            <h4 class="alert-heading">Well done!</h4>
+                                            <h4 class="alert-heading">Success!</h4>
                                             <p>Anda sudah mengisi Form Morning Briefing Hari ini.</p>
                                             <hr>
                                             <p class="mb-0">Layanan Cerah by Bank Sumsel Babel.</p>
