@@ -170,7 +170,7 @@
                                             </div>
                                             <div class="form-group" id="tanggal">
                                                 <label for="exampleInputPassword1">Tanggal</label>
-                                                <input type="date" class="form-control" id="tanggal" name="tanggal" >
+                                                <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= date('Y-m-d'); ?>" readonly >
                                                 <?= form_error('tanggal','<small class="text-danger pl-3 ">','</small>');?>
                                             </div>
                                             <script type="text/javascript">

@@ -532,51 +532,51 @@ if ($('#ambarchart4').length) {
         "theme": "light",
         "marginRight": 70,
         "dataProvider": [{
-            "country": "USA",
+            "country": "Januari",
             "visits": 3025,
             "color": "#8918FE"
         }, {
-            "country": "China",
+            "country": "Febuari",
             "visits": 1882,
             "color": "#7474F0"
         }, {
-            "country": "Japan",
+            "country": "Maret",
             "visits": 1809,
             "color": "#C5C5FD"
         }, {
-            "country": "Germany",
+            "country": "April",
             "visits": 1322,
             "color": "#952FFE"
         }, {
-            "country": "UK",
+            "country": "Mei",
             "visits": 1122,
             "color": "#7474F0"
         }, {
-            "country": "France",
+            "country": "Juni",
             "visits": 1114,
             "color": "#CBCBFD"
         }, {
-            "country": "India",
+            "country": "Juli",
             "visits": 984,
             "color": "#FD9C21"
         }, {
-            "country": "Spain",
+            "country": "Agustus",
             "visits": 711,
             "color": "#0D8ECF"
         }, {
-            "country": "Netherlands",
+            "country": "September",
             "visits": 665,
             "color": "#0D52D1"
         }, {
-            "country": "Russia",
+            "country": "Oktober",
             "visits": 580,
             "color": "#2A0CD0"
         }, {
-            "country": "South Korea",
+            "country": "November",
             "visits": 443,
             "color": "#8A0CCF"
         }, {
-            "country": "Canada",
+            "country": "Desember",
             "visits": 441,
             "color": "#9F43FE"
         }],

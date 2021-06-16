@@ -3,8 +3,152 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Model_data extends CI_Model
 {
+	public function totalUser(){
+		$this->db->select('count(id_pengguna) as total' );
+		$this->db->from('pengguna');
+		$this->db->where('role','2');
+		$this->db->or_where('role','3');
+		return $this->db->get()->row_array();
+	}
+	public function totalBriefing(){
+		$this->db->select('count(*) as total' );
+		$this->db->from('briefing');
+		return $this->db->get()->row_array();
+	}
+	public function totalBriefingYa(){
+		$this->db->select('count(*) as total' );
+		$this->db->from('briefing');
+		$this->db->where('morning','Ya');
+		return $this->db->get()->row_array();
+	}
+	public function totalBriefingTidak(){
+		$this->db->select('count(*) as total' );
+		$this->db->from('briefing');
+		$this->db->where('morning','Tidak');
+		return $this->db->get()->row_array();
+	}
+	public function totalBriefingSudahToday(){
+		$this->db->select('count(*) as total' );
+		$this->db->from('briefing');
+		$this->db->where('tanggal', date('Y-m-d'));
+		return $this->db->get()->row_array();
+	}
 
 	//
+	public function getJan(){
+		$this->db->select('briefing.id_pengguna,pengguna.kantor, COUNT(*) AS jumlah_bulanan');
+		$this->db->from('briefing');
+		$this->db->join('pengguna','pengguna.id_pengguna = briefing.id_pengguna');
+		$this->db->where('MONTH(tanggal)=1');
+		$this->db->group_by('id_pengguna');
+		return $this->db->get();
+
+	}public function getFeb(){
+		$this->db->select('briefing.id_pengguna,pengguna.kantor, COUNT(*) AS jumlah_bulanan');
+		$this->db->from('briefing');
+		$this->db->join('pengguna','pengguna.id_pengguna = briefing.id_pengguna');
+		$this->db->where('MONTH(tanggal)=2');
+		$this->db->group_by('id_pengguna');
+		return $this->db->get();
+
+	}public function getMar(){
+		$this->db->select('briefing.id_pengguna,pengguna.kantor, COUNT(*) AS jumlah_bulanan');
+		$this->db->from('briefing');
+		$this->db->join('pengguna','pengguna.id_pengguna = briefing.id_pengguna');
+		$this->db->where('MONTH(tanggal)=3');
+		$this->db->group_by('id_pengguna');
+		return $this->db->get();
+
+	}public function getApr(){
+		$this->db->select('briefing.id_pengguna,pengguna.kantor, COUNT(*) AS jumlah_bulanan');
+		$this->db->from('briefing');
+		$this->db->join('pengguna','pengguna.id_pengguna = briefing.id_pengguna');
+		$this->db->where('MONTH(tanggal)=4');
+		$this->db->group_by('id_pengguna');
+		return $this->db->get();
+
+	}
+	public function getMei(){
+		$this->db->select('briefing.id_pengguna,pengguna.kantor, COUNT(*) AS jumlah_bulanan');
+		$this->db->from('briefing');
+		$this->db->join('pengguna','pengguna.id_pengguna = briefing.id_pengguna');
+		$this->db->where('MONTH(tanggal)=5');
+		$this->db->group_by('id_pengguna');
+		return $this->db->get();
+
+	}
+	public function getJun(){
+		$this->db->select('briefing.id_pengguna,pengguna.kantor, COUNT(*) AS jumlah_bulanan');
+		$this->db->from('briefing');
+		$this->db->join('pengguna','pengguna.id_pengguna = briefing.id_pengguna');
+		$this->db->where('MONTH(tanggal)=6');
+		$this->db->group_by('id_pengguna');
+		return $this->db->get();
+
+	}
+	public function getJul(){
+		$this->db->select('briefing.id_pengguna,pengguna.kantor, COUNT(*) AS jumlah_bulanan');
+		$this->db->from('briefing');
+		$this->db->join('pengguna','pengguna.id_pengguna = briefing.id_pengguna');
+		$this->db->where('MONTH(tanggal)=7');
+		$this->db->group_by('id_pengguna');
+		return $this->db->get();
+
+	}
+	public function getAgu(){
+		$this->db->select('briefing.id_pengguna,pengguna.kantor, COUNT(*) AS jumlah_bulanan');
+		$this->db->from('briefing');
+		$this->db->join('pengguna','pengguna.id_pengguna = briefing.id_pengguna');
+		$this->db->where('MONTH(tanggal)=8');
+		$this->db->group_by('id_pengguna');
+		return $this->db->get();
+
+	}
+	public function getSep(){
+		$this->db->select('briefing.id_pengguna,pengguna.kantor, COUNT(*) AS jumlah_bulanan');
+		$this->db->from('briefing');
+		$this->db->join('pengguna','pengguna.id_pengguna = briefing.id_pengguna');
+		$this->db->where('MONTH(tanggal)=9');
+		$this->db->group_by('id_pengguna');
+		return $this->db->get();
+
+	}
+	public function getOkt(){
+		$this->db->select('briefing.id_pengguna,pengguna.kantor, COUNT(*) AS jumlah_bulanan');
+		$this->db->from('briefing');
+		$this->db->join('pengguna','pengguna.id_pengguna = briefing.id_pengguna');
+		$this->db->where('MONTH(tanggal)=10');
+		$this->db->group_by('id_pengguna');
+		return $this->db->get();
+
+	}
+	public function getNov(){
+		$this->db->select('briefing.id_pengguna,pengguna.kantor, COUNT(*) AS jumlah_bulanan');
+		$this->db->from('briefing');
+		$this->db->join('pengguna','pengguna.id_pengguna = briefing.id_pengguna');
+		$this->db->where('MONTH(tanggal)=11');
+		$this->db->group_by('id_pengguna');
+		return $this->db->get();
+
+	}
+	public function getDes(){
+		$this->db->select('briefing.id_pengguna,pengguna.kantor, COUNT(*) AS jumlah_bulanan');
+		$this->db->from('briefing');
+		$this->db->join('pengguna','pengguna.id_pengguna = briefing.id_pengguna');
+		$this->db->where('MONTH(tanggal)=12');
+		$this->db->group_by('id_pengguna');
+		return $this->db->get();
+
+	}
+	public function getUserBriefing(){
+		$this->db->select('briefing.id_pengguna,pengguna.kantor, COUNT(*) AS jumlah_bulanan');
+		$this->db->from('briefing');
+		$this->db->join('pengguna','pengguna.id_pengguna = briefing.id_pengguna');
+		$this->db->group_by('id_pengguna');
+		return $this->db->get();
+
+	}
+	///
 
 	public function login($user)
 	{

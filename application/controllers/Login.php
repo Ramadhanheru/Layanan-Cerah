@@ -26,7 +26,7 @@ class Login extends CI_Controller {
                    
                    $this->session->set_userdata(array('user'=>$userr,'password'=>$password,'role' => $user['role'], 'id_pengguna' => $user['id_pengguna']));
 					$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6>Welcome '.$userr.' ! <span>Anda Masuk Sebagai Admin.</span></h6> </div>');
-					redirect('Welcome/');
+					redirect('Welcome/dashboard');
 
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">

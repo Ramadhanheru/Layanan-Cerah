@@ -1,7 +1,7 @@
 
             <div class="main-content-inner">
                 <div class="row">
-                    <div class="col-12 mt-5">
+                    <div class="col-12 mt-3">
                                 <div class="row">
                                     <div class="col-12">
                                         <div><?= $this->session->flashdata('message');?></div>    
@@ -9,7 +9,178 @@
                                 </div>
                     </div>
 
-                    <div class="col-lg-12 mt-2" >
+                    
+                    <?php if($this->session->userdata('role')==1){ ?>
+                    <div class="col-12 ">
+                        <div class="row">
+                            <div class="col-md-3  mb-3">
+                                <div class="card">
+                                    <div class="seo-fact sbg1">
+                                        <div class="p-4 d-flex justify-content-between align-items-center">
+                                            <div class="seofct-icon"> Kantor Cabang</div>
+                                            <h2><?= $kantor_cabang['total'] ?></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3  mb-3">
+                                <div class="card">
+                                    <div class="seo-fact sbg1">
+                                        <div class="p-4 d-flex justify-content-between align-items-center">
+                                            <div class="seofct-icon"> Total Briefing</div>
+                                            <h2><?= $totalBriefing['total'] ?></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3  mb-3">
+                                <div class="card">
+                                    <div class="seo-fact sbg1">
+                                        <div class="p-4 d-flex justify-content-between align-items-center">
+                                            <div class="seofct-icon"> Briefing Ya </div>
+                                            <h2><?= $totalBriefingYa['total'] ?></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3  mb-3">
+                                <div class="card">
+                                    <div class="seo-fact sbg4">
+                                        <div class="p-4 d-flex justify-content-between align-items-center">
+                                            <div class="seofct-icon"> Briefing Tidak</div>
+                                            <h2><?= $totalBriefingTidak['total'] ?></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3 mb-lg-0">
+                                <div class="card">
+                                    <div class="seo-fact sbg2">
+                                        <div class="p-4 d-flex justify-content-between align-items-center">
+                                            <div class="seofct-icon"><small class="text-white">Today,&nbsp;<?= date('d-m-Y'); ?></small><br>Absen Briefing Sudah </div>
+                                            <h2><?= $totalBriefingSudahToday['total'] ?></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="seo-fact sbg3">
+                                        <div class="p-4 d-flex justify-content-between align-items-center">
+                                            <div class="seofct-icon"><small class="text-white">Today,&nbsp;<?= date('d-m-Y'); ?></small><br>Absen Briefing Belum</div>
+                                            <h2><?= $kantor_cabang['total'] - $totalBriefingSudahToday['total']  ?></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+
+                    <div class="col-12 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title">Grafik Data Per-Bulan</h4>
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                           <div id="myfirstchart"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+                    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+                    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+                    <script type="text/javascript">
+                        new Morris.Bar({
+                          // ID of the element in which to draw the chart.
+                          element: 'myfirstchart',
+                          // Chart data records -- each entry in this array corresponds to a point on
+                          // the chart.
+                          data: [
+                            { month: 'Jan',
+                            <?php foreach($jan->result() as $q) { ?> 
+                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?php } ?>
+                            },{ month: 'Feb',
+                            <?php foreach($feb->result() as $q) { ?> 
+                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?php } ?>
+                            },{ month: 'Mar',
+                            <?php foreach($mar->result() as $q) { ?> 
+                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?php } ?>
+                            },{ month: 'Apr',
+                            <?php foreach($apr->result() as $q) { ?> 
+                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?php } ?>
+                            },{ month: 'Mei',
+                            <?php foreach($mei->result() as $q) { ?> 
+                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?php } ?>
+                            },
+                            { month: 'Juni',
+                            <?php foreach($jun->result() as $q) { ?> 
+                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?php } ?>
+                            },
+                            { month: 'Juli',
+                            <?php foreach($jul->result() as $q) { ?> 
+                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?php } ?>
+                            },
+                            { month: 'Agu',
+                            <?php foreach($agu->result() as $q) { ?> 
+                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?php } ?>
+                            },
+                            { month: 'Sep',
+                            <?php foreach($sep->result() as $q) { ?> 
+                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?php } ?>
+                            },
+                            { month: 'Okt',
+                            <?php foreach($okt->result() as $q) { ?> 
+                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?php } ?>
+                            },
+                            { month: 'Nov',
+                            <?php foreach($nov->result() as $q) { ?> 
+                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?php } ?>
+                            },
+                            { month: 'Des',
+                            <?php foreach($des->result() as $q) { ?> 
+                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?php } ?>
+                            }
+
+
+                          ],
+                          // The name of the data record attribute that contains x-values.
+                          xkey: 'month',
+                          // A list of names of data record attributes that contain y-values.
+                          ykeys: [
+                          <?php foreach($pengguna->result() as $q) { ?>
+                            '<?=$q->kantor?>',
+                        <?php } ?>
+                          ],
+                          // Labels for the ykeys -- will be displayed when you hover over the
+                          // chart.
+                          labels: [<?php foreach($pengguna->result() as $q) { ?>
+                            '<?=$q->kantor?>',
+                        <?php } ?>]
+                        });
+                    </script>
+
+
+
+
+                    <?php } ?>
+                    <?php if($this->session->userdata('role')==2){ ?>
+                        <div class="col-lg-12 mt-2" >
                         <div class="card">
                             <div class="card-body bg1">
                                 <h4 class="header-title text-white">BANK SUMSEL BABEL</h4>
@@ -44,7 +215,6 @@
                         </div>
                     </div>
                     <!-- testimonial area end -->
-                    <?php if($this->session->userdata('role')==2){ ?>
                     <!-- Primary table start -->
                     <div class="col-12 mt-5">
                         <div class="card">

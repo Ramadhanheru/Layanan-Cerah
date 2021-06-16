@@ -35,8 +35,26 @@ class Welcome extends CI_Controller {
 	public function dashboard()
 	{
 		$data['user'] =  $this->db->get_where('pengguna', ['username' => $this->session->userdata('user')])->row_array();
+		$data['jan'] = $this->Model_data->getJan();
+		$data['feb'] = $this->Model_data->getFeb();
+		$data['mar'] = $this->Model_data->getMar();
+		$data['apr'] = $this->Model_data->getApr();
+		$data['mei'] = $this->Model_data->getMei();
+		$data['jun'] = $this->Model_data->getJun();
+		$data['jul'] = $this->Model_data->getJul();
+		$data['agu'] = $this->Model_data->getAgu();
+		$data['sep'] = $this->Model_data->getSep();
+		$data['okt'] = $this->Model_data->getOkt();
+		$data['nov'] = $this->Model_data->getNov();
+		$data['des'] = $this->Model_data->getDes();
+		$data['pengguna'] = $this->Model_data->getUserBriefing();
+		$data['kantor_cabang'] = $this->Model_data->totalUser();
+		$data['totalBriefing'] = $this->Model_data->totalBriefing();
+		$data['totalBriefingYa'] = $this->Model_data->totalBriefingYa();
+		$data['totalBriefingTidak'] = $this->Model_data->totalBriefingTidak();
+		$data['totalBriefingSudahToday'] = $this->Model_data->totalBriefingSudahToday();
 		$this->load->view('template/header',$data);
-		$this->load->view('dashboard');
+		$this->load->view('dashboard',$data);
 		$this->load->view('template/footer');
 	}
 	public function kantor_cabang()

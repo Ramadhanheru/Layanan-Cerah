@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="<?= base_url('asset/'); ?>assets/css/default-css.css">
     <link rel="stylesheet" href="<?= base_url('asset/'); ?>assets/css/styles.css">
     <link rel="stylesheet" href="<?= base_url('asset/'); ?>assets/css/responsive.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    
     <!-- modernizr css -->
     <script src="<?= base_url('asset/'); ?>assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
