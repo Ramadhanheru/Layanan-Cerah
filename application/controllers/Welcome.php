@@ -219,7 +219,7 @@ class Welcome extends CI_Controller {
 		$this->db->set($data);
 		$this->db->where('id_pengguna', $id);
 		$this->db->update('pengguna');
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil diubah ! 
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('welcome/kantor_cabang');
 		}
@@ -316,7 +316,7 @@ class Welcome extends CI_Controller {
 		$this->db->set($data);
 		$this->db->where('id', $id);
 		$this->db->update('briefing');
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil diubah ! 
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('welcome/briefing');
 		}
@@ -397,7 +397,7 @@ class Welcome extends CI_Controller {
             	$this->db->set($data);
 				$this->db->where('id', $id);
 				$this->db->update('checking_peralatan');
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil diubah ! 
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('welcome/checking_peralatan');
 		}
@@ -492,7 +492,7 @@ class Welcome extends CI_Controller {
             	$this->db->set($data);
 				$this->db->where('id', $id);
 				$this->db->update('checking_kenyamanan');
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil diubah ! 
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('welcome/checking_kenyamanan');
 		}
@@ -586,7 +586,7 @@ class Welcome extends CI_Controller {
             	$this->db->set($data);
 				$this->db->where('id', $id);
 				$this->db->update('checking_toilet');
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil diubah ! 
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('welcome/checking_toilet');
 		}
@@ -680,7 +680,7 @@ class Welcome extends CI_Controller {
             	$this->db->set($data);
 				$this->db->where('id', $id);
 				$this->db->update('checking_atm');
-				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil ditambah ! 
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"><h6> Data berhasil diubah ! 
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </h6></div>');
 				redirect('welcome/checking_atm');
 		}

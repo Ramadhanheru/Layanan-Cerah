@@ -39,7 +39,7 @@
             <div class="login-box ptb--100">
                 <form action="<?= base_url('login/loginn'); ?>" method="post">
                     <div class="login-form-head" style="background-color: #56369E;">
-                        <h4 style="font-weight: bolder; font-size: 40px; letter-spacing: 7px; font-family: 'Gobold CUTS' !important;"><b>layanan cerah</b> </h4><p>by</p>
+                        <h4 style="font-weight: bolder; font-size: 40px; letter-spacing: 7px; font-family: century !important;"><b>layanan cerah</b> </h4><p>by</p>
                         <div>
                             <img src="<?= base_url('asset/logo1.png') ?>">
                         </div>
