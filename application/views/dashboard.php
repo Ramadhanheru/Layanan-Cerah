@@ -102,58 +102,58 @@
                           data: [
                             { month: 'Jan',
                             <?php foreach($jan->result() as $q) { ?> 
-                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?=str_replace(' ', '', $q->kantor) ?>: <?= $q->jumlah_bulanan ?>, 
                                 <?php } ?>
                             },{ month: 'Feb',
                             <?php foreach($feb->result() as $q) { ?> 
-                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?=str_replace(' ', '', $q->kantor) ?>: <?= $q->jumlah_bulanan ?>, 
                                 <?php } ?>
                             },{ month: 'Mar',
                             <?php foreach($mar->result() as $q) { ?> 
-                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?=str_replace(' ', '', $q->kantor) ?>: <?= $q->jumlah_bulanan ?>, 
                                 <?php } ?>
                             },{ month: 'Apr',
                             <?php foreach($apr->result() as $q) { ?> 
-                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?=str_replace(' ', '', $q->kantor) ?>: <?= $q->jumlah_bulanan ?>, 
                                 <?php } ?>
                             },{ month: 'Mei',
                             <?php foreach($mei->result() as $q) { ?> 
-                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?=str_replace(' ', '', $q->kantor) ?>: <?= $q->jumlah_bulanan ?>, 
                                 <?php } ?>
                             },
                             { month: 'Juni',
                             <?php foreach($jun->result() as $q) { ?> 
-                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?=str_replace(' ', '', $q->kantor) ?>: <?= $q->jumlah_bulanan ?>, 
                                 <?php } ?>
                             },
                             { month: 'Juli',
                             <?php foreach($jul->result() as $q) { ?> 
-                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?=str_replace(' ', '', $q->kantor) ?>: <?= $q->jumlah_bulanan ?>, 
                                 <?php } ?>
                             },
                             { month: 'Agu',
                             <?php foreach($agu->result() as $q) { ?> 
-                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?=str_replace(' ', '', $q->kantor) ?>: <?= $q->jumlah_bulanan ?>, 
                                 <?php } ?>
                             },
                             { month: 'Sep',
                             <?php foreach($sep->result() as $q) { ?> 
-                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?=str_replace(' ', '', $q->kantor) ?>: <?= $q->jumlah_bulanan ?>, 
                                 <?php } ?>
                             },
                             { month: 'Okt',
                             <?php foreach($okt->result() as $q) { ?> 
-                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?=str_replace(' ', '', $q->kantor) ?>: <?= $q->jumlah_bulanan ?>, 
                                 <?php } ?>
                             },
                             { month: 'Nov',
                             <?php foreach($nov->result() as $q) { ?> 
-                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?=str_replace(' ', '', $q->kantor) ?>: <?= $q->jumlah_bulanan ?>, 
                                 <?php } ?>
                             },
                             { month: 'Des',
                             <?php foreach($des->result() as $q) { ?> 
-                                <?=$q->kantor ?>: <?= $q->jumlah_bulanan ?>, 
+                                <?=str_replace(' ', '', $q->kantor) ?>: <?= $q->jumlah_bulanan ?>, 
                                 <?php } ?>
                             }
 
@@ -164,13 +164,13 @@
                           // A list of names of data record attributes that contain y-values.
                           ykeys: [
                           <?php foreach($pengguna->result() as $q) { ?>
-                            '<?=$q->kantor?>',
+                            '<?= str_replace(' ', '', $q->kantor)?>',
                         <?php } ?>
                           ],
                           // Labels for the ykeys -- will be displayed when you hover over the
                           // chart.
                           labels: [<?php foreach($pengguna->result() as $q) { ?>
-                            '<?=$q->kantor?>',
+                            '<?= str_replace(' ', '', $q->kantor)?>',
                         <?php } ?>]
                         });
                     </script>
